@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitor Tracker Dashboard</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Competitor Tracker</h1>
+      <div class="header-stats">
+        <span id="last-updated">Last updated: —</span>
+        <span id="total-competitors">Competitors: —</span>
+        <span id="total-changes">Total changes: —</span>
+      </div>
+    </header>
+
+    <section class="cards" id="competitor-cards"></section>
+
+    <section class="filters">
+      <div class="filter-group">
+        <label for="filter-competitor">Competitor</label>
+        <select id="filter-competitor"><option value="">All</option></select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-type">Change Type</label>
+        <select id="filter-type">
+          <option value="">All</option>
+          <option value="new_page">New Page</option>
+          <option value="content_update">Content Update</option>
+          <option value="page_removed">Page Removed</option>
+          <option value="title_change">Title Change</option>
+          <option value="meta_change">Meta Change</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-days">Time Range</label>
+        <select id="filter-days">
+          <option value="7">Last 7 days</option>
+          <option value="30" selected>Last 30 days</option>
+          <option value="90">Last 90 days</option>
+          <option value="0">All time</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="timeline">
+      <h2>Change Timeline <span id="change-count"></span></h2>
+      <div id="timeline-list"></div>
+      <div class="pagination" id="pagination"></div>
+    </section>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
