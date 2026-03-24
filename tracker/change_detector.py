@@ -20,24 +20,15 @@ def detect_changes(
     removal_threshold: int = 2,
     http_client=None,
 ) -> tuple[list[dict], dict[str, dict]]:
-    """
-    Detect changes between current crawl and previous state.
-
-    Returns (changes, updated_pages) where:
-    - changes: list of change events
-    - updated_pages: merged page state for saving
-    """
     changes = []
     now = datetime.now(timezone.utc).isoformat()
     updated_pages = {}
-
-    # Build feed lookup for enrichment
     feed_lookup = {e["url"]: e for e in feed_entries}
 
     current_url_set = set(current_urls.keys())
     previous_url_set = set(previous_pages.keys())
 
-    # --- Detect URL case changes ---
+    # --- URL case changes ---
     if not is_first_run:
         case_changes = _detect_url_case_changes(current_url_set, previous_url_set)
         for old_url, new_url in case_changes:
@@ -49,23 +40,24 @@ def detect_changes(
                 "url": new_url,
                 "change_type": "url_case_change",
                 "title": previous_pages.get(old_url, {}).get("title", ""),
-                "details": {
-                    "old_url": old_url,
-                    "new_url": new_url,
-                },
+                "details": {"old_url": old_url, "new_url": new_url},
             })
 
     # --- New pages ---
     new_urls = current_url_set - previous_url_set
     for url in new_urls:
+        h = current_hashes.get(url, {})
         page_data = {
             "first_seen": now,
             "last_seen": now,
-            "content_hash": current_hashes.get(url, {}).get("content_hash", ""),
-            "title": current_hashes.get(url, {}).get("title", "")
-                or current_urls[url].get("title", ""),
-            "meta_description": current_hashes.get(url, {}).get("meta_description", ""),
-            "content_snippet": current_hashes.get(url, {}).get("content_snippet", ""),
+            "content_hash": h.get("content_hash", ""),
+            "title": h.get("title", "") or current_urls[url].get("title", ""),
+            "meta_description": h.get("meta_description", ""),
+            "content_snippet": h.get("content_snippet", ""),
+            "h1_tags": h.get("h1_tags", []),
+            "word_count": h.get("word_count", 0),
+            "canonical": h.get("canonical", ""),
+            "schemas": h.get("schemas", []),
             "lastmod_from_sitemap": current_urls[url].get("lastmod"),
             "consecutive_missing": 0,
         }
@@ -73,6 +65,17 @@ def detect_changes(
 
         if not is_first_run:
             feed_info = feed_lookup.get(url, {})
+            details = {
+                "source": "sitemap+rss" if url in feed_lookup else "sitemap",
+                "published_date": feed_info.get("published"),
+                "summary": feed_info.get("summary", ""),
+            }
+            if page_data["word_count"]:
+                details["word_count"] = page_data["word_count"]
+            if page_data["h1_tags"]:
+                details["h1"] = page_data["h1_tags"][0]
+            if page_data["schemas"]:
+                details["schemas"] = page_data["schemas"]
             changes.append({
                 "id": _generate_id(now, domain, url),
                 "timestamp": now,
@@ -81,14 +84,10 @@ def detect_changes(
                 "url": url,
                 "change_type": "new_page",
                 "title": page_data["title"],
-                "details": {
-                    "source": "sitemap+rss" if url in feed_lookup else "sitemap",
-                    "published_date": feed_info.get("published"),
-                    "summary": feed_info.get("summary", ""),
-                },
+                "details": details,
             })
 
-    # --- Existing pages: check for content changes ---
+    # --- Existing pages ---
     existing_urls = current_url_set & previous_url_set
     for url in existing_urls:
         prev = previous_pages[url]
@@ -99,8 +98,11 @@ def detect_changes(
             "title": prev.get("title", ""),
             "meta_description": prev.get("meta_description", ""),
             "content_snippet": prev.get("content_snippet", ""),
-            "lastmod_from_sitemap": current_urls[url].get("lastmod")
-                or prev.get("lastmod_from_sitemap"),
+            "h1_tags": prev.get("h1_tags", []),
+            "word_count": prev.get("word_count", 0),
+            "canonical": prev.get("canonical", ""),
+            "schemas": prev.get("schemas", []),
+            "lastmod_from_sitemap": current_urls[url].get("lastmod") or prev.get("lastmod_from_sitemap"),
             "consecutive_missing": 0,
         }
 
@@ -113,71 +115,114 @@ def detect_changes(
             page_data["title"] = h.get("title", "") or page_data["title"]
             page_data["meta_description"] = h.get("meta_description", "") or page_data["meta_description"]
             page_data["content_snippet"] = h.get("content_snippet", "")
+            page_data["h1_tags"] = h.get("h1_tags", [])
+            page_data["word_count"] = h.get("word_count", 0)
+            page_data["canonical"] = h.get("canonical", "")
+            page_data["schemas"] = h.get("schemas", [])
 
-            if old_hash and new_hash and old_hash != new_hash and not is_first_run:
-                # Generate content diff
-                old_snippet = prev.get("content_snippet", "")
-                new_snippet = h.get("content_snippet", "")
-                diff = generate_diff_summary(old_snippet, new_snippet)
+            if not is_first_run:
+                # Content update
+                if old_hash and new_hash and old_hash != new_hash:
+                    old_snippet = prev.get("content_snippet", "")
+                    new_snippet = h.get("content_snippet", "")
+                    diff = generate_diff_summary(old_snippet, new_snippet)
 
-                changes.append({
-                    "id": _generate_id(now, domain, url),
-                    "timestamp": now,
-                    "competitor": competitor_name,
-                    "domain": domain,
-                    "url": url,
-                    "change_type": "content_update",
-                    "title": page_data["title"],
-                    "details": {
+                    old_wc = prev.get("word_count", 0)
+                    new_wc = h.get("word_count", 0)
+                    wc_change = new_wc - old_wc if old_wc and new_wc else 0
+
+                    details = {
                         "source": "content_hash",
                         "old_hash": old_hash[:12],
                         "new_hash": new_hash[:12],
                         "diff_summary": diff.get("summary", ""),
                         "added": diff.get("added", []),
                         "removed": diff.get("removed", []),
-                    },
-                })
-            elif not is_first_run:
-                # Check title/meta changes
-                if h.get("title") and prev.get("title") and h["title"] != prev["title"]:
+                    }
+                    if wc_change:
+                        details["word_count_change"] = wc_change
+                        details["old_word_count"] = old_wc
+                        details["new_word_count"] = new_wc
+
                     changes.append({
                         "id": _generate_id(now, domain, url),
                         "timestamp": now,
                         "competitor": competitor_name,
                         "domain": domain,
                         "url": url,
-                        "change_type": "title_change",
-                        "title": h["title"],
-                        "details": {
-                            "old_title": prev["title"],
-                            "new_title": h["title"],
-                        },
-                    })
-                if (
-                    h.get("meta_description")
-                    and prev.get("meta_description")
-                    and h["meta_description"] != prev["meta_description"]
-                ):
-                    changes.append({
-                        "id": _generate_id(now, domain, url),
-                        "timestamp": now,
-                        "competitor": competitor_name,
-                        "domain": domain,
-                        "url": url,
-                        "change_type": "meta_change",
+                        "change_type": "content_update",
                         "title": page_data["title"],
-                        "details": {
-                            "old_meta": prev["meta_description"][:100],
-                            "new_meta": h["meta_description"][:100],
-                        },
+                        "details": details,
                     })
+
+                # H1 change
+                old_h1 = prev.get("h1_tags", [])
+                new_h1 = h.get("h1_tags", [])
+                if old_h1 and new_h1 and old_h1 != new_h1:
+                    changes.append({
+                        "id": _generate_id(now, domain, url + ":h1"),
+                        "timestamp": now,
+                        "competitor": competitor_name,
+                        "domain": domain,
+                        "url": url,
+                        "change_type": "h1_change",
+                        "title": page_data["title"],
+                        "details": {"old_h1": old_h1[0], "new_h1": new_h1[0]},
+                    })
+
+                # Schema changes
+                old_schemas = set(prev.get("schemas", []))
+                new_schemas = set(h.get("schemas", []))
+                if old_schemas != new_schemas:
+                    added_s = list(new_schemas - old_schemas)
+                    removed_s = list(old_schemas - new_schemas)
+                    if added_s or removed_s:
+                        changes.append({
+                            "id": _generate_id(now, domain, url + ":schema"),
+                            "timestamp": now,
+                            "competitor": competitor_name,
+                            "domain": domain,
+                            "url": url,
+                            "change_type": "schema_change",
+                            "title": page_data["title"],
+                            "details": {"added_schemas": added_s, "removed_schemas": removed_s},
+                        })
+
+                # Title change (only if content hash is same)
+                if old_hash == new_hash:
+                    if h.get("title") and prev.get("title") and h["title"] != prev["title"]:
+                        changes.append({
+                            "id": _generate_id(now, domain, url + ":title"),
+                            "timestamp": now,
+                            "competitor": competitor_name,
+                            "domain": domain,
+                            "url": url,
+                            "change_type": "title_change",
+                            "title": h["title"],
+                            "details": {"old_title": prev["title"], "new_title": h["title"]},
+                        })
+                    if (h.get("meta_description") and prev.get("meta_description")
+                            and h["meta_description"] != prev["meta_description"]):
+                        changes.append({
+                            "id": _generate_id(now, domain, url + ":meta"),
+                            "timestamp": now,
+                            "competitor": competitor_name,
+                            "domain": domain,
+                            "url": url,
+                            "change_type": "meta_change",
+                            "title": page_data["title"],
+                            "details": {
+                                "old_meta": prev["meta_description"][:100],
+                                "new_meta": h["meta_description"][:100],
+                            },
+                        })
 
         updated_pages[url] = page_data
 
-    # --- Missing pages (potential removals) ---
+    # --- Missing pages ---
     missing_urls = previous_url_set - current_url_set
     checked_count = 0
-    max_missing_checks = 20  # limit HTTP checks for missing URLs per competitor
+    max_missing_checks = 20
 
     for url in missing_urls:
         prev = previous_pages[url]
@@ -187,7 +232,6 @@ def detect_changes(
         page_data["last_seen"] = prev.get("last_seen", now)
 
         if consecutive >= removal_threshold and not is_first_run:
-            # Check redirect and noindex status for removed pages
             redirect_info = None
             noindex = False
             if http_client and checked_count < max_missing_checks:
@@ -220,21 +264,15 @@ def detect_changes(
                 "details": change_details,
             })
         else:
-            # Keep tracking but don't remove yet
             updated_pages[url] = page_data
 
     return changes, updated_pages
 
 
-def _detect_url_case_changes(
-    current_urls: set[str], previous_urls: set[str]
-) -> list[tuple[str, str]]:
-    """Detect URLs that changed only in case (uppercase → lowercase)."""
-    # Build lowercase lookup for current URLs
+def _detect_url_case_changes(current_urls, previous_urls):
     current_lower = {}
     for url in current_urls:
         current_lower.setdefault(url.lower(), []).append(url)
-
     changes = []
     missing = previous_urls - current_urls
     for old_url in missing:
@@ -245,6 +283,6 @@ def _detect_url_case_changes(
     return changes
 
 
-def _generate_id(timestamp: str, domain: str, url: str) -> str:
+def _generate_id(timestamp, domain, url):
     raw = f"{timestamp}:{domain}:{url}"
     return "chg_" + hashlib.md5(raw.encode()).hexdigest()[:12]

@@ -5,54 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Competitor Tracker Dashboard</title>
   <link rel="stylesheet" href="assets/style.css">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1>Competitor Tracker</h1>
-      <div class="header-stats">
-        <span id="last-updated">Last updated: —</span>
-        <span id="total-competitors">Competitors: —</span>
-        <span id="total-changes">Total changes: —</span>
+  <div class="app">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">CT</div>
+        <span>CompetitorTracker</span>
       </div>
-    </header>
+      <div class="sidebar-nav">
+        <a href="#" class="nav-item active" data-tab="overview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Overview
+        </a>
+        <a href="#" class="nav-item" data-tab="changes">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          Changes
+        </a>
+        <a href="#" class="nav-item" data-tab="activity">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Activity
+        </a>
+      </div>
+      <div class="sidebar-footer">
+        <button class="export-btn" onclick="exportExcel()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Excel
+        </button>
+      </div>
+    </nav>
 
-    <section class="cards" id="competitor-cards"></section>
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu" onclick="toggleSidebar()">&#9776;</button>
+          <h1 id="page-title">Overview</h1>
+        </div>
+        <div class="topbar-right">
+          <span class="status-dot"></span>
+          <span id="last-updated">Last updated: —</span>
+        </div>
+      </header>
 
-    <section class="filters">
-      <div class="filter-group">
-        <label for="filter-competitor">Competitor</label>
-        <select id="filter-competitor"><option value="">All</option></select>
+      <!-- Overview Tab -->
+      <div class="tab-content active" id="tab-overview">
+        <div class="stats-row" id="global-stats"></div>
+        <div class="cards" id="competitor-cards"></div>
       </div>
-      <div class="filter-group">
-        <label for="filter-type">Change Type</label>
-        <select id="filter-type">
-          <option value="">All</option>
-          <option value="new_page">New Page</option>
-          <option value="content_update">Content Update</option>
-          <option value="page_removed">Page Removed</option>
-          <option value="redirect">Redirect (301)</option>
-          <option value="title_change">Title Change</option>
-          <option value="meta_change">Meta Change</option>
-          <option value="url_case_change">URL Case Change</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <label for="filter-days">Time Range</label>
-        <select id="filter-days">
-          <option value="7">Last 7 days</option>
-          <option value="30" selected>Last 30 days</option>
-          <option value="90">Last 90 days</option>
-          <option value="0">All time</option>
-        </select>
-      </div>
-    </section>
 
-    <section class="timeline">
-      <h2>Change Timeline <span id="change-count"></span></h2>
-      <div id="timeline-list"></div>
-      <div class="pagination" id="pagination"></div>
-    </section>
+      <!-- Changes Tab -->
+      <div class="tab-content" id="tab-changes">
+        <div class="filters-bar">
+          <div class="filter-group">
+            <label>Competitor</label>
+            <select id="filter-competitor"><option value="">All Competitors</option></select>
+          </div>
+          <div class="filter-group">
+            <label>Change Type</label>
+            <select id="filter-type">
+              <option value="">All Types</option>
+              <option value="new_page">New Page</option>
+              <option value="content_update">Content Update</option>
+              <option value="page_removed">Page Removed</option>
+              <option value="redirect">Redirect (301)</option>
+              <option value="title_change">Title Change</option>
+              <option value="meta_change">Meta Change</option>
+              <option value="h1_change">H1 Change</option>
+              <option value="schema_change">Schema Change</option>
+              <option value="url_case_change">URL Case Change</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Time Range</label>
+            <select id="filter-days">
+              <option value="7">Last 7 days</option>
+              <option value="14">Last 14 days</option>
+              <option value="30" selected>Last 30 days</option>
+              <option value="90">Last 90 days</option>
+              <option value="0">All time</option>
+              <option value="custom">Custom range</option>
+            </select>
+          </div>
+          <div class="filter-group date-range" id="custom-dates" style="display:none">
+            <label>From</label>
+            <input type="date" id="date-from">
+          </div>
+          <div class="filter-group date-range" id="custom-dates-to" style="display:none">
+            <label>To</label>
+            <input type="date" id="date-to">
+          </div>
+        </div>
+        <div class="timeline-header">
+          <h2>Change Timeline <span id="change-count"></span></h2>
+        </div>
+        <div id="timeline-list"></div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+
+      <!-- Activity Tab -->
+      <div class="tab-content" id="tab-activity">
+        <div class="chart-section">
+          <h2>Publishing Frequency (New Pages per Week)</h2>
+          <div class="chart-container" id="pub-chart"></div>
+        </div>
+        <div class="chart-section">
+          <h2>Change Activity (All Types per Week)</h2>
+          <div class="chart-container" id="activity-chart"></div>
+        </div>
+      </div>
+    </main>
   </div>
 
   <script src="assets/app.js"></script>
