@@ -364,7 +364,7 @@ function renderBarChart(containerId, filterType) {
 // --- Excel Export ---
 function exportExcel() {
   if (typeof XLSX === "undefined") { alert("Excel library loading..."); return; }
-  const src = filtered.length ? filtered : changes;
+  const src = filtered;
   const rows = src.map(c => ({
     Date: c.timestamp,
     Competitor: c.competitor,
