@@ -1,5 +1,159 @@
 [
   {
+    "id": "chg_999dbd9a8d1c",
+    "timestamp": "2026-03-24T05:40:02.607146+00:00",
+    "competitor": "Vantage Circle",
+    "domain": "vantagecircle.com",
+    "url": "https://www.vantagecircle.com/webinars/webinar-with-partha-neog/",
+    "change_type": "content_update",
+    "title": "- Vantage Circle",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "bb632e4cb94a",
+      "new_hash": "03fb9c0a8099"
+    }
+  },
+  {
+    "id": "chg_6de23ab28260",
+    "timestamp": "2026-03-24T05:40:02.607146+00:00",
+    "competitor": "Vantage Circle",
+    "domain": "vantagecircle.com",
+    "url": "https://www.vantagecircle.com/RnR-GCC/",
+    "change_type": "page_removed",
+    "title": "Boost Employee Productivity with Rewards and Recognition Program",
+    "details": {
+      "last_seen": "2026-03-23T10:47:30.432414+00:00",
+      "first_seen": "2026-03-23T10:47:30.432414+00:00",
+      "missing_runs": 2
+    }
+  },
+  {
+    "id": "chg_e94f35cdf3b4",
+    "timestamp": "2026-03-24T05:40:02.607146+00:00",
+    "competitor": "Vantage Circle",
+    "domain": "vantagecircle.com",
+    "url": "https://www.vantagecircle.com/tools/aire-score-assessment-GCC/",
+    "change_type": "page_removed",
+    "title": "",
+    "details": {
+      "last_seen": "2026-03-23T10:47:30.432414+00:00",
+      "first_seen": "2026-03-23T10:47:30.432414+00:00",
+      "missing_runs": 2
+    }
+  },
+  {
+    "id": "chg_4010078362f7",
+    "timestamp": "2026-03-24T05:40:02.607146+00:00",
+    "competitor": "Vantage Circle",
+    "domain": "vantagecircle.com",
+    "url": "https://www.vantagecircle.com/events/RecognitionandRewards-Toolkit-ME/",
+    "change_type": "page_removed",
+    "title": "",
+    "details": {
+      "last_seen": "2026-03-23T10:47:30.432414+00:00",
+      "first_seen": "2026-03-23T10:47:30.432414+00:00",
+      "missing_runs": 2
+    }
+  },
+  {
+    "id": "chg_7b377157029e",
+    "timestamp": "2026-03-24T05:40:02.607146+00:00",
+    "competitor": "Vantage Circle",
+    "domain": "vantagecircle.com",
+    "url": "https://www.vantagecircle.com/tools/aire-score-assessment-India/",
+    "change_type": "page_removed",
+    "title": "",
+    "details": {
+      "last_seen": "2026-03-23T10:47:30.432414+00:00",
+      "first_seen": "2026-03-23T10:47:30.432414+00:00",
+      "missing_runs": 2
+    }
+  },
+  {
+    "id": "chg_2254b6099342",
+    "timestamp": "2026-03-24T05:40:02.607146+00:00",
+    "competitor": "Vantage Circle",
+    "domain": "vantagecircle.com",
+    "url": "https://www.vantagecircle.com/tools/aire-score-assessment-GCC-SHRM/",
+    "change_type": "page_removed",
+    "title": "",
+    "details": {
+      "last_seen": "2026-03-23T10:47:30.432414+00:00",
+      "first_seen": "2026-03-23T10:47:30.432414+00:00",
+      "missing_runs": 2
+    }
+  },
+  {
+    "id": "chg_34f9fa108d26",
+    "timestamp": "2026-03-24T05:40:02.607146+00:00",
+    "competitor": "Vantage Circle",
+    "domain": "vantagecircle.com",
+    "url": "https://www.vantagecircle.com/events/shrmIAC/",
+    "change_type": "page_removed",
+    "title": "",
+    "details": {
+      "last_seen": "2026-03-23T10:47:30.432414+00:00",
+      "first_seen": "2026-03-23T10:47:30.432414+00:00",
+      "missing_runs": 2
+    }
+  },
+  {
+    "id": "chg_e4613079c86d",
+    "timestamp": "2026-03-24T05:45:26.677708+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/solutions/manufacturing",
+    "change_type": "content_update",
+    "title": "Manufacturing Industry Solutions | Culture Cloud by O.C. Tanner",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "709c25637a84",
+      "new_hash": "2245b8e6920f"
+    }
+  },
+  {
+    "id": "chg_c4b863337583",
+    "timestamp": "2026-03-24T05:45:26.677708+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/solutions/company-culture",
+    "change_type": "content_update",
+    "title": "Company Culture Solutions | Culture Cloud by O.C. Tanner",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "ee1b09af206d",
+      "new_hash": "caf5f7c0f9d9"
+    }
+  },
+  {
+    "id": "chg_f8cbc6bd6df3",
+    "timestamp": "2026-03-24T05:45:26.677708+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/solutions/employee-engagement",
+    "change_type": "content_update",
+    "title": "Employee Engagement Solutions | Culture Cloud by O.C. Tanner",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "dd396d8bbc98",
+      "new_hash": "fe1c0aeef66e"
+    }
+  },
+  {
+    "id": "chg_a04a8426963f",
+    "timestamp": "2026-03-24T05:45:26.677708+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/state-of-employee-recognition-report",
+    "change_type": "page_removed",
+    "title": "The State of Employee Recognition Report | O.C. Tanner",
+    "details": {
+      "last_seen": "2026-03-23T10:53:11.419214+00:00",
+      "first_seen": "2026-03-23T10:53:11.419214+00:00",
+      "missing_runs": 2
+    }
+  },
+  {
     "id": "chg_1b2814e4092f",
     "timestamp": "2026-03-24T05:18:43.390670+00:00",
     "competitor": "Vantage Circle",
