@@ -2,7 +2,7 @@ name: Monitor Competitor Websites
 
 on:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '30 4 * * *'  # 4:30 AM UTC = 10:00 AM IST, daily
   workflow_dispatch:
 
 permissions:
@@ -36,7 +36,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run competitor monitor
-        run: python -m tracker.main --verbose
+        run: python -m tracker.main --config config/competitors.yml --verbose
         env:
           PYTHONUNBUFFERED: '1'
 

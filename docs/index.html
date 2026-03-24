@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Competitor Tracker Dashboard</title>
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
@@ -48,54 +51,60 @@
         </div>
       </header>
 
+      <!-- Shared Filters Bar (visible on Overview + Changes) -->
+      <div class="filters-bar" id="filters-bar">
+        <div class="filter-group">
+          <label>Competitor</label>
+          <select id="filter-competitor"><option value="">All Competitors</option></select>
+        </div>
+        <div class="filter-group">
+          <label>Change Type</label>
+          <select id="filter-type">
+            <option value="">All Types</option>
+            <option value="new_page">New Page</option>
+            <option value="content_update">Content Update</option>
+            <option value="page_removed">Page Removed</option>
+            <option value="redirect">Redirect (301)</option>
+            <option value="title_change">Title Change</option>
+            <option value="meta_change">Meta Change</option>
+            <option value="h1_change">H1 Change</option>
+            <option value="schema_change">Schema Change</option>
+            <option value="url_case_change">URL Case Change</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Time Range</label>
+          <select id="filter-days">
+            <option value="7">Last 7 days</option>
+            <option value="14">Last 14 days</option>
+            <option value="30" selected>Last 30 days</option>
+            <option value="90">Last 90 days</option>
+            <option value="0">All time</option>
+            <option value="custom">Custom range</option>
+          </select>
+        </div>
+        <div class="filter-group date-range-group" id="custom-from" style="display:none">
+          <label>From</label>
+          <input type="text" id="date-from" placeholder="Select date" class="datepicker-input" readonly>
+        </div>
+        <div class="filter-group date-range-group" id="custom-to" style="display:none">
+          <label>To</label>
+          <input type="text" id="date-to" placeholder="Select date" class="datepicker-input" readonly>
+        </div>
+      </div>
+
       <!-- Overview Tab -->
       <div class="tab-content active" id="tab-overview">
         <div class="stats-row" id="global-stats"></div>
         <div class="cards" id="competitor-cards"></div>
+        <div class="timeline-header">
+          <h2>Recent Changes <span id="overview-change-count"></span></h2>
+        </div>
+        <div id="overview-timeline"></div>
       </div>
 
       <!-- Changes Tab -->
       <div class="tab-content" id="tab-changes">
-        <div class="filters-bar">
-          <div class="filter-group">
-            <label>Competitor</label>
-            <select id="filter-competitor"><option value="">All Competitors</option></select>
-          </div>
-          <div class="filter-group">
-            <label>Change Type</label>
-            <select id="filter-type">
-              <option value="">All Types</option>
-              <option value="new_page">New Page</option>
-              <option value="content_update">Content Update</option>
-              <option value="page_removed">Page Removed</option>
-              <option value="redirect">Redirect (301)</option>
-              <option value="title_change">Title Change</option>
-              <option value="meta_change">Meta Change</option>
-              <option value="h1_change">H1 Change</option>
-              <option value="schema_change">Schema Change</option>
-              <option value="url_case_change">URL Case Change</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label>Time Range</label>
-            <select id="filter-days">
-              <option value="7">Last 7 days</option>
-              <option value="14">Last 14 days</option>
-              <option value="30" selected>Last 30 days</option>
-              <option value="90">Last 90 days</option>
-              <option value="0">All time</option>
-              <option value="custom">Custom range</option>
-            </select>
-          </div>
-          <div class="filter-group date-range" id="custom-dates" style="display:none">
-            <label>From</label>
-            <input type="date" id="date-from">
-          </div>
-          <div class="filter-group date-range" id="custom-dates-to" style="display:none">
-            <label>To</label>
-            <input type="date" id="date-to">
-          </div>
-        </div>
         <div class="timeline-header">
           <h2>Change Timeline <span id="change-count"></span></h2>
         </div>

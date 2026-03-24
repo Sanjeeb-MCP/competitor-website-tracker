@@ -4,6 +4,7 @@ let state = null;
 let changes = [];
 let filtered = [];
 let currentPage = 1;
+let fpFrom, fpTo;
 
 async function loadData() {
   try {
@@ -18,7 +19,19 @@ async function loadData() {
     state = { competitors: {}, run_count: 0 };
     changes = [];
   }
+  initDatePickers();
   renderAll();
+}
+
+function initDatePickers() {
+  const opts = {
+    dateFormat: "d M Y",
+    theme: "dark",
+    disableMobile: true,
+    onChange: () => applyFilters(),
+  };
+  fpFrom = flatpickr("#date-from", { ...opts, defaultDate: new Date(Date.now() - 30*24*60*60*1000) });
+  fpTo = flatpickr("#date-to", { ...opts, defaultDate: new Date() });
 }
 
 function renderAll() {
@@ -42,6 +55,9 @@ document.querySelectorAll(".nav-item").forEach(item => {
     document.getElementById("tab-" + tab).classList.add("active");
     document.getElementById("page-title").textContent =
       tab === "overview" ? "Overview" : tab === "changes" ? "Changes" : "Activity";
+    // Show filters on overview and changes
+    document.getElementById("filters-bar").style.display =
+      (tab === "overview" || tab === "changes") ? "flex" : "none";
   });
 });
 
@@ -145,14 +161,12 @@ function populateFilters() {
 
 document.getElementById("filter-days").addEventListener("change", function() {
   const custom = this.value === "custom";
-  document.getElementById("custom-dates").style.display = custom ? "flex" : "none";
-  document.getElementById("custom-dates-to").style.display = custom ? "flex" : "none";
+  document.getElementById("custom-from").style.display = custom ? "flex" : "none";
+  document.getElementById("custom-to").style.display = custom ? "flex" : "none";
   if (!custom) applyFilters();
 });
 document.getElementById("filter-competitor").addEventListener("change", applyFilters);
 document.getElementById("filter-type").addEventListener("change", applyFilters);
-document.getElementById("date-from").addEventListener("change", applyFilters);
-document.getElementById("date-to").addEventListener("change", applyFilters);
 
 function applyFilters() {
   const competitor = document.getElementById("filter-competitor").value;
@@ -163,11 +177,15 @@ function applyFilters() {
     if (competitor && c.domain !== competitor) return false;
     if (type && c.change_type !== type) return false;
     if (daysVal === "custom") {
-      const from = document.getElementById("date-from").value;
-      const to = document.getElementById("date-to").value;
       const ts = new Date(c.timestamp);
-      if (from && ts < new Date(from)) return false;
-      if (to && ts > new Date(to + "T23:59:59")) return false;
+      const fromDates = fpFrom.selectedDates;
+      const toDates = fpTo.selectedDates;
+      if (fromDates.length && ts < fromDates[0]) return false;
+      if (toDates.length) {
+        const toEnd = new Date(toDates[0]);
+        toEnd.setHours(23, 59, 59, 999);
+        if (ts > toEnd) return false;
+      }
     } else if (daysVal !== "0") {
       const days = parseInt(daysVal);
       const cutoff = new Date(Date.now() - days*24*60*60*1000);
@@ -178,9 +196,23 @@ function applyFilters() {
 
   currentPage = 1;
   renderTimeline();
+  renderOverviewTimeline();
 }
 
-// --- Timeline ---
+// --- Overview Timeline (top 10 recent) ---
+function renderOverviewTimeline() {
+  const container = document.getElementById("overview-timeline");
+  const countEl = document.getElementById("overview-change-count");
+  countEl.textContent = `(${filtered.length} total)`;
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty-state">No changes found for the selected filters.</div>';
+    return;
+  }
+  container.innerHTML = filtered.slice(0, 10).map(renderChangeItem).join("");
+}
+
+// --- Changes Timeline ---
 function renderTimeline() {
   const container = document.getElementById("timeline-list");
   document.getElementById("change-count").textContent = `(${filtered.length})`;
@@ -289,59 +321,51 @@ function renderBarChart(containerId, filterType) {
     return;
   }
 
-  // Group by week
   const weeks = {};
-  const relevantChanges = filterType ? changes.filter(c => c.change_type === filterType) : changes;
-  relevantChanges.forEach(c => {
+  const rel = filterType ? changes.filter(c => c.change_type === filterType) : changes;
+  rel.forEach(c => {
     const d = new Date(c.timestamp);
-    const weekStart = new Date(d);
-    weekStart.setDate(d.getDate() - d.getDay());
-    const key = weekStart.toISOString().slice(0, 10);
+    const ws = new Date(d); ws.setDate(d.getDate() - d.getDay());
+    const key = ws.toISOString().slice(0, 10);
     if (!weeks[key]) weeks[key] = {};
     if (!weeks[key][c.domain]) weeks[key][c.domain] = 0;
     weeks[key][c.domain]++;
   });
 
-  const sortedWeeks = Object.keys(weeks).sort().slice(-12);
-  if (!sortedWeeks.length) {
+  const sorted = Object.keys(weeks).sort().slice(-12);
+  if (!sorted.length) {
     container.innerHTML = '<div class="empty-state">Not enough data yet.</div>';
     return;
   }
 
   const domains = competitors.map(([d]) => d);
-  const maxVal = Math.max(...sortedWeeks.map(w => {
-    return Math.max(...domains.map(d => weeks[w]?.[d] || 0), 0);
-  }), 1);
+  const maxVal = Math.max(...sorted.map(w => Math.max(...domains.map(d => weeks[w]?.[d] || 0), 0)), 1);
 
   let barsHtml = "";
-  sortedWeeks.forEach(week => {
+  sorted.forEach(week => {
     let bars = "";
     domains.forEach((domain, i) => {
       const val = weeks[week]?.[domain] || 0;
       const h = (val / maxVal * 140);
-      const color = COLORS[i % COLORS.length];
-      bars += `<div class="chart-bar" style="height:${h}px;background:${color}" title="${competitors[i][1].name}: ${val}"></div>`;
+      bars += `<div class="chart-bar" style="height:${h}px;background:${COLORS[i % COLORS.length]}" title="${competitors[i][1].name}: ${val}"></div>`;
     });
     const label = new Date(week).toLocaleDateString("en-US", {month:"short", day:"numeric"});
     barsHtml += `<div class="chart-bar-group">${bars}<span class="chart-bar-label">${label}</span></div>`;
   });
 
   let legend = '<div class="chart-legend">';
-  competitors.forEach(([domain, data], i) => {
+  competitors.forEach(([d, data], i) => {
     legend += `<div class="legend-item"><div class="legend-dot" style="background:${COLORS[i % COLORS.length]}"></div>${esc(data.name)}</div>`;
   });
   legend += '</div>';
-
   container.innerHTML = `<div class="chart">${barsHtml}</div>${legend}`;
 }
 
 // --- Excel Export ---
 function exportExcel() {
-  if (typeof XLSX === "undefined") {
-    alert("Excel library still loading. Please try again in a moment.");
-    return;
-  }
-  const rows = (filtered.length ? filtered : changes).map(c => ({
+  if (typeof XLSX === "undefined") { alert("Excel library loading..."); return; }
+  const src = filtered.length ? filtered : changes;
+  const rows = src.map(c => ({
     Date: c.timestamp,
     Competitor: c.competitor,
     Domain: c.domain,
@@ -363,41 +387,36 @@ function exportExcel() {
     "Added Content": (c.details?.added || []).join(" | "),
     "Removed Content": (c.details?.removed || []).join(" | "),
   }));
-
   const ws = XLSX.utils.json_to_sheet(rows);
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Changes");
 
-  // Competitor summary sheet
-  const summaryRows = Object.entries(state.competitors || {}).map(([domain, data]) => {
+  const summary = Object.entries(state.competitors || {}).map(([domain, data]) => {
     const dc = changes.filter(c => c.domain === domain);
     return {
-      Competitor: data.name,
-      Domain: domain,
+      Competitor: data.name, Domain: domain,
       "Total Pages": data.total_urls_discovered || 0,
       "Total Changes": dc.length,
       "New Pages": dc.filter(c => c.change_type === "new_page").length,
       "Content Updates": dc.filter(c => c.change_type === "content_update").length,
       "Redirects": dc.filter(c => c.change_type === "redirect").length,
-      "Pages Removed": dc.filter(c => c.change_type === "page_removed").length,
+      "Removed": dc.filter(c => c.change_type === "page_removed").length,
     };
   });
-  const ws2 = XLSX.utils.json_to_sheet(summaryRows);
-  XLSX.utils.book_append_sheet(wb, ws2, "Summary");
-
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(summary), "Summary");
   XLSX.writeFile(wb, "competitor-tracker-export.xlsx");
 }
 
 // --- Pagination ---
 function renderPagination() {
   const container = document.getElementById("pagination");
-  const totalPages = Math.ceil(filtered.length / PER_PAGE);
-  if (totalPages <= 1) { container.innerHTML = ""; return; }
-  let html = `<button ${currentPage===1?"disabled":""} onclick="goToPage(${currentPage-1})">Prev</button>`;
-  const s = Math.max(1, currentPage-2), e = Math.min(totalPages, currentPage+2);
-  for (let i=s; i<=e; i++) html += `<button class="${i===currentPage?"active":""}" onclick="goToPage(${i})">${i}</button>`;
-  html += `<button ${currentPage===totalPages?"disabled":""} onclick="goToPage(${currentPage+1})">Next</button>`;
-  container.innerHTML = html;
+  const tp = Math.ceil(filtered.length / PER_PAGE);
+  if (tp <= 1) { container.innerHTML = ""; return; }
+  let h = `<button ${currentPage===1?"disabled":""} onclick="goToPage(${currentPage-1})">Prev</button>`;
+  for (let i = Math.max(1,currentPage-2); i <= Math.min(tp,currentPage+2); i++)
+    h += `<button class="${i===currentPage?"active":""}" onclick="goToPage(${i})">${i}</button>`;
+  h += `<button ${currentPage===tp?"disabled":""} onclick="goToPage(${currentPage+1})">Next</button>`;
+  container.innerHTML = h;
 }
 function goToPage(p) { currentPage=p; renderTimeline(); window.scrollTo({top:0,behavior:"smooth"}); }
 
@@ -407,11 +426,6 @@ function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-US", {month:"short",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"});
 }
 function formatType(t) { return t.replace(/_/g," "); }
-function esc(s) {
-  if (!s) return "";
-  const d = document.createElement("div");
-  d.textContent = s;
-  return d.innerHTML;
-}
+function esc(s) { if (!s) return ""; const d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
 
 loadData();

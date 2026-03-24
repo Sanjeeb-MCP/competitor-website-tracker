@@ -179,9 +179,32 @@ body {
   cursor: pointer;
 }
 
+/* Filters bar positioning */
+.filters-bar {
+  margin: 0 28px;
+  margin-top: 16px;
+}
+
 /* Tab content */
 .tab-content { display: none; padding: 24px 28px; }
 .tab-content.active { display: block; }
+
+/* Flatpickr overrides */
+.datepicker-input {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 6px !important;
+  padding: 7px 10px !important;
+  font-size: 0.82rem !important;
+  font-family: inherit !important;
+  cursor: pointer !important;
+  width: 140px;
+}
+.datepicker-input:focus {
+  outline: none;
+  border-color: var(--accent) !important;
+}
 
 /* Global Stats */
 .stats-row {
