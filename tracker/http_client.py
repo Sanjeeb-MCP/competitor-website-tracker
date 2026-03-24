@@ -73,3 +73,56 @@ class TrackerHTTPClient:
         if resp is None:
             return None
         return resp.text
+
+    def check_redirect(self, url: str) -> dict | None:
+        """Check if a URL redirects (301/302). Returns redirect info or None."""
+        domain = self._get_domain(url)
+        self._rate_limit(domain)
+
+        headers = {"User-Agent": random.choice(USER_AGENTS)}
+        try:
+            resp = self.session.get(
+                url, headers=headers, timeout=self.timeout, allow_redirects=False
+            )
+            if resp.status_code in (301, 302, 307, 308):
+                location = resp.headers.get("Location", "")
+                return {
+                    "status_code": resp.status_code,
+                    "redirect_to": location,
+                }
+            return None
+        except requests.RequestException:
+            return None
+
+    def check_status(self, url: str) -> dict:
+        """Check URL status, meta robots, and redirects without following redirects."""
+        domain = self._get_domain(url)
+        self._rate_limit(domain)
+
+        headers = {"User-Agent": random.choice(USER_AGENTS)}
+        result = {"status_code": None, "redirect_to": None, "noindex": False, "x_robots": None}
+        try:
+            resp = self.session.get(url, headers=headers, timeout=self.timeout)
+            result["status_code"] = resp.status_code
+
+            # Check if it was redirected
+            if resp.history:
+                result["redirect_to"] = resp.url
+                result["status_code"] = resp.history[0].status_code
+
+            # Check X-Robots-Tag header
+            x_robots = resp.headers.get("X-Robots-Tag", "")
+            if x_robots:
+                result["x_robots"] = x_robots
+                if "noindex" in x_robots.lower():
+                    result["noindex"] = True
+
+            # Check meta robots tag in HTML
+            if resp.status_code == 200 and "text/html" in resp.headers.get("Content-Type", ""):
+                text = resp.text[:5000].lower()
+                if 'name="robots"' in text and "noindex" in text:
+                    result["noindex"] = True
+
+            return result
+        except requests.RequestException:
+            return result

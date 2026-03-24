@@ -138,6 +138,8 @@ body {
 .badge-page_removed { background: #991b1b; color: #f87171; }
 .badge-title_change { background: #1e3a5f; color: #60a5fa; }
 .badge-meta_change { background: #4c1d95; color: #a78bfa; }
+.badge-redirect { background: #7c2d12; color: #fb923c; }
+.badge-url_case_change { background: #365314; color: #a3e635; }
 
 .change-competitor {
   font-size: 0.8rem;
@@ -168,6 +170,78 @@ body {
   color: #94a3b8;
   padding-top: 4px;
   border-top: 1px solid #334155;
+}
+.change-details a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+.change-details a:hover {
+  text-decoration: underline;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.tag-noindex {
+  background: #991b1b;
+  color: #fca5a5;
+}
+
+/* Content diff dropdown */
+.dropdown-toggle {
+  font-size: 0.8rem;
+  color: #60a5fa;
+  cursor: pointer;
+  padding: 4px 0;
+  user-select: none;
+}
+.dropdown-toggle:hover {
+  color: #93bbfc;
+}
+.dropdown-content {
+  margin-top: 6px;
+  padding: 10px;
+  background: #0f172a;
+  border-radius: 6px;
+  border: 1px solid #334155;
+}
+.diff-section {
+  margin-bottom: 8px;
+}
+.diff-section:last-child {
+  margin-bottom: 0;
+}
+.diff-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.diff-added-label { color: #4ade80; }
+.diff-removed-label { color: #f87171; }
+.diff-line {
+  font-size: 0.78rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-bottom: 3px;
+  font-family: "SF Mono", "Fira Code", monospace;
+  word-break: break-word;
+}
+.diff-added {
+  background: rgba(74, 222, 128, 0.1);
+  color: #86efac;
+  border-left: 3px solid #4ade80;
+}
+.diff-removed {
+  background: rgba(248, 113, 113, 0.1);
+  color: #fca5a5;
+  border-left: 3px solid #f87171;
 }
 
 /* Pagination */

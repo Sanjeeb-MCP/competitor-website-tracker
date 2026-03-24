@@ -98,6 +98,7 @@ def process_competitor(
         previous_pages=previous_pages,
         is_first_run=is_first_run,
         removal_threshold=settings.get("removal_threshold_runs", 2),
+        http_client=http_client,
     )
 
     return changes, updated_pages

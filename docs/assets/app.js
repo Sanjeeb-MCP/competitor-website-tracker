@@ -51,6 +51,7 @@ function renderCompetitorCards() {
     const updates = weekChanges.filter(
       (c) => c.change_type === "content_update"
     ).length;
+    const redirects = weekChanges.filter((c) => c.change_type === "redirect").length;
 
     const card = document.createElement("div");
     card.className = "card";
@@ -59,6 +60,7 @@ function renderCompetitorCards() {
       <div class="card-stat"><span>Total pages</span><span class="value">${data.total_urls_discovered || Object.keys(data.pages || {}).length}</span></div>
       <div class="card-stat"><span>New this week</span><span class="value">${newPages}</span></div>
       <div class="card-stat"><span>Updates this week</span><span class="value">${updates}</span></div>
+      <div class="card-stat"><span>Redirects this week</span><span class="value">${redirects}</span></div>
       <div class="card-stat"><span>All-time changes</span><span class="value">${domainChanges.length}</span></div>
     `;
     container.appendChild(card);
@@ -123,6 +125,18 @@ function renderTimeline() {
 function renderChangeItem(c) {
   const badge = `<span class="badge badge-${c.change_type}">${formatType(c.change_type)}</span>`;
   const details = renderDetails(c);
+  const hasDropdown = c.change_type === "content_update" && c.details &&
+    ((c.details.added && c.details.added.length > 0) || (c.details.removed && c.details.removed.length > 0));
+
+  let dropdownHtml = "";
+  if (hasDropdown) {
+    dropdownHtml = `
+      <div class="dropdown-toggle" onclick="toggleDropdown(this)">View content changes ▾</div>
+      <div class="dropdown-content" style="display:none">
+        ${renderContentDiff(c.details)}
+      </div>
+    `;
+  }
 
   return `
     <div class="change-item">
@@ -134,8 +148,42 @@ function renderChangeItem(c) {
       ${c.title ? `<div class="change-title">${escapeHtml(c.title)}</div>` : ""}
       <div class="change-url"><a href="${escapeHtml(c.url)}" target="_blank" rel="noopener">${escapeHtml(c.url)}</a></div>
       ${details ? `<div class="change-details">${details}</div>` : ""}
+      ${dropdownHtml}
     </div>
   `;
+}
+
+function renderContentDiff(d) {
+  let html = "";
+
+  if (d.added && d.added.length > 0) {
+    html += '<div class="diff-section"><div class="diff-label diff-added-label">Added</div>';
+    for (const line of d.added) {
+      html += `<div class="diff-line diff-added">+ ${escapeHtml(line)}</div>`;
+    }
+    html += "</div>";
+  }
+
+  if (d.removed && d.removed.length > 0) {
+    html += '<div class="diff-section"><div class="diff-label diff-removed-label">Removed</div>';
+    for (const line of d.removed) {
+      html += `<div class="diff-line diff-removed">- ${escapeHtml(line)}</div>`;
+    }
+    html += "</div>";
+  }
+
+  return html || '<div class="diff-section">Minor text changes detected</div>';
+}
+
+function toggleDropdown(el) {
+  const content = el.nextElementSibling;
+  if (content.style.display === "none") {
+    content.style.display = "block";
+    el.textContent = "Hide content changes ▴";
+  } else {
+    content.style.display = "none";
+    el.textContent = "View content changes ▾";
+  }
 }
 
 function renderDetails(c) {
@@ -144,13 +192,32 @@ function renderDetails(c) {
 
   if (d.summary) parts.push(escapeHtml(d.summary));
   if (d.published_date) parts.push("Published: " + escapeHtml(d.published_date));
+
+  // Content update summary
+  if (d.diff_summary) parts.push(escapeHtml(d.diff_summary));
+
+  // Title change
   if (d.old_title && d.new_title)
     parts.push(`Title: "${escapeHtml(d.old_title)}" → "${escapeHtml(d.new_title)}"`);
+
+  // Meta change
   if (d.old_meta && d.new_meta)
     parts.push(`Meta: "${escapeHtml(d.old_meta)}" → "${escapeHtml(d.new_meta)}"`);
-  if (d.old_hash && d.new_hash)
-    parts.push(`Hash: ${d.old_hash} → ${d.new_hash}`);
-  if (d.missing_runs) parts.push(`Missing for ${d.missing_runs} consecutive runs`);
+
+  // Redirect info
+  if (d.redirect) {
+    parts.push(`${d.redirect.status_code} → <a href="${escapeHtml(d.redirect.redirect_to)}" target="_blank" rel="noopener">${escapeHtml(d.redirect.redirect_to)}</a>`);
+  }
+
+  // Noindex flag
+  if (d.noindex) parts.push('<span class="tag tag-noindex">noindex</span>');
+
+  // URL case change
+  if (d.old_url && d.new_url) {
+    parts.push(`URL changed: ${escapeHtml(d.old_url)} → ${escapeHtml(d.new_url)}`);
+  }
+
+  if (d.missing_runs && !d.redirect) parts.push(`Missing for ${d.missing_runs} consecutive runs`);
 
   return parts.join(" &middot; ");
 }
