@@ -597,6 +597,17 @@ body {
   font-size: 0.9rem;
 }
 
+/* Footer */
+.dashboard-footer {
+  text-align: center;
+  padding: 24px 28px;
+  margin-top: 32px;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .sidebar {
