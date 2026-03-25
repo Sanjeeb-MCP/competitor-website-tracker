@@ -1,5 +1,1085 @@
 [
   {
+    "id": "chg_c2eb1ae0da9d",
+    "timestamp": "2026-03-25T06:20:42.590015+00:00",
+    "competitor": "Vantage Circle",
+    "domain": "vantagecircle.com",
+    "url": "https://www.vantagecircle.com/news/media-coverage/",
+    "change_type": "page_removed",
+    "title": "",
+    "details": {
+      "last_seen": "2026-03-24T05:40:02.607146+00:00",
+      "first_seen": "2026-03-23T10:47:30.432414+00:00",
+      "missing_runs": 2,
+      "noindex": false
+    }
+  },
+  {
+    "id": "chg_a7a78de160d3",
+    "timestamp": "2026-03-25T06:23:49.475279+00:00",
+    "competitor": "Achievers",
+    "domain": "achievers.com",
+    "url": "https://www.achievers.com/blog/employee-recognition-awards-2/",
+    "change_type": "new_page",
+    "title": "25 ideas for employee recognition awards | Achievers",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 2817,
+      "h1": "25 ideas for employee recognition awards",
+      "schemas": [
+        "SoftwareApplication",
+        "FAQPage"
+      ]
+    }
+  },
+  {
+    "id": "chg_fd5bb67285a9",
+    "timestamp": "2026-03-25T06:23:49.475279+00:00",
+    "competitor": "Achievers",
+    "domain": "achievers.com",
+    "url": "https://www.achievers.com/gb/blog/culture-of-recognition/",
+    "change_type": "new_page",
+    "title": "11 tips for building a culture of recognition | Achievers",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 1792,
+      "h1": "11 tips on building a culture of recognition in the UK",
+      "schemas": [
+        "SoftwareApplication"
+      ]
+    }
+  },
+  {
+    "id": "chg_53b9723a3cd1",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/podcasts/state-of-employee-recognition-2026",
+    "change_type": "new_page",
+    "title": "Social Ties Lead to ROI: The State of Employee Recognition in 2026",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 460,
+      "h1": "Resource Hub",
+      "schemas": [
+        "PodcastEpisode"
+      ]
+    }
+  },
+  {
+    "id": "chg_8289468b0d3e",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/influence-greatness-2026/faq",
+    "change_type": "new_page",
+    "title": "FAQ",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 239,
+      "h1": "Still have questions? We have answers."
+    }
+  },
+  {
+    "id": "chg_42edf5b99681",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/influence-greatness-2026/experiences",
+    "change_type": "new_page",
+    "title": "Experiences",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 361,
+      "h1": "Your complete culture experience"
+    }
+  },
+  {
+    "id": "chg_5cba59d8ee86",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/articles/nimbly-resilient-workplace",
+    "change_type": "schema_change",
+    "title": "Less Reactionary, More Reliable: The Nimbly Resilient Workplace",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_07587cf3d8d9",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/legal/india-legal",
+    "change_type": "schema_change",
+    "title": "India – Legal",
+    "details": {
+      "added_schemas": [
+        "WebPage"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_8cc0c5279b3b",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/press/o-c-tanner-wins-four-stevie-r-awards-for-the-2018-american-business-awards-r",
+    "change_type": "content_update",
+    "title": "O.C. Tanner Wins Four Stevie Awards in 2018 | O.C. Tanner",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "974048e35ef7",
+      "new_hash": "8aa2d7010b26",
+      "diff_summary": "No previous content to compare",
+      "added": [],
+      "removed": []
+    }
+  },
+  {
+    "id": "chg_bf4ba165a52d",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/webinars/company-culture-your-key-to-retention",
+    "change_type": "schema_change",
+    "title": "Company Culture: Your Key to Retention | O.C. Tanner Webinars",
+    "details": {
+      "added_schemas": [
+        "Event"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_6b10cf2ac3cc",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/articles/4-surprising-benefits-of-peer-to-peer-recognition-programs",
+    "change_type": "schema_change",
+    "title": "Peer-to-Peer Recognition Programs: 4 Surprising Benefits",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_95c444e14b72",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/white-papers/tips-for-strong-employee-experience",
+    "change_type": "schema_change",
+    "title": "How To Do Employee Recognition Well: 5 Tips for Creating a Strong Employee Experience",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_5bcae993ce51",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/articles/employee-recognition-budget",
+    "change_type": "schema_change",
+    "title": "How to Budget for Employee Recognition",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_718fcc8b6da8",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/articles/empathy-in-the-workplace",
+    "change_type": "schema_change",
+    "title": "Why Practical Empathy Is the Skill Your Workplace Needs Right Now",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_e78b47a81b1e",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/legal/ai-policy",
+    "change_type": "schema_change",
+    "title": "O.C. Tanner AI Policy & Ethics Principles",
+    "details": {
+      "added_schemas": [
+        "WebPage"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_e79d8debebc0",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/podcasts/leading-in-high-pressure-environments",
+    "change_type": "schema_change",
+    "title": "Leading in High-Pressure Environments with Guest Carey Lohrenz",
+    "details": {
+      "added_schemas": [
+        "PodcastEpisode"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_aef5701aaca0",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/articles/culture-cloud-exciting-updates-for-q4-2024",
+    "change_type": "schema_change",
+    "title": "Culture Cloud: Exciting Updates for Q4 2024",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_3f5e88f85c50",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/solutions/offline-deskless-employees",
+    "change_type": "content_update",
+    "title": "Offline Employee Recognition Solutions | Culture Cloud by O.C. Tanner",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "8e5aee0eb6b3",
+      "new_hash": "f4fb48b1e890",
+      "diff_summary": "No previous content to compare",
+      "added": [],
+      "removed": []
+    }
+  },
+  {
+    "id": "chg_3e8c7f898679",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/products/stores",
+    "change_type": "content_update",
+    "title": "Specialty Storefronts | Culture Cloud by O.C. Tanner",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "4b3477799776",
+      "new_hash": "3f08e2f2819c",
+      "diff_summary": "No previous content to compare",
+      "added": [],
+      "removed": []
+    }
+  },
+  {
+    "id": "chg_169d89297090",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/solutions/employee-retention",
+    "change_type": "content_update",
+    "title": "Employee Retention Solutions | Culture Cloud by O.C. Tanner",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "a08ec1931e7a",
+      "new_hash": "ba5d823edb31",
+      "diff_summary": "No previous content to compare",
+      "added": [],
+      "removed": []
+    }
+  },
+  {
+    "id": "chg_52e0ed07fcfc",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/white-papers/5-culture-trends-2024-manufacturing",
+    "change_type": "schema_change",
+    "title": "What Manufacturing Employees Want in 2024",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_4d9a80aecf40",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/white-papers/5-culture-trends-for-2023-zh-hk",
+    "change_type": "schema_change",
+    "title": "2023 年五大文化趨勢",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_bebe21ead65c",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/webinars/how-to-be-a-great-human-leader-in-the-age-of-ai-with-erica-keswin",
+    "change_type": "schema_change",
+    "title": "How To Be a Great Human Leader in the Age of AI—With Erica Keswin | O.C. Tanner Webinars",
+    "details": {
+      "added_schemas": [
+        "Event"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_b9e179249b7b",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/webinars/people-centered-change-management-in-practice",
+    "change_type": "schema_change",
+    "title": "Resiliency in Times of Change: People-Centered Change Management in Practice | O.C. Tanner Webinars",
+    "details": {
+      "added_schemas": [
+        "Event"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_c0062d4a5725",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/press/o-c-tanner-announces-2023-culture-trends-u-s-tour",
+    "change_type": "content_update",
+    "title": "O.C. Tanner Announces 2023 Culture Trends U.S. Tour",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "44eda509eea7",
+      "new_hash": "10e94d3b1cbb",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 9,
+      "old_word_count": 760,
+      "new_word_count": 769
+    }
+  },
+  {
+    "id": "chg_30ac4e4d5817",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/articles/prioritize-your-employee-recognition-goals",
+    "change_type": "schema_change",
+    "title": "Prioritize Your Employee Recognition Goals",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_1c42a15f26e4",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/press/o-c-tanner-named-one-of-peoples-50-companies-that-care",
+    "change_type": "content_update",
+    "title": "O.C. Tanner Named One of People's 2018 \"50 Companies That Care\"",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "bf2d055bf9cb",
+      "new_hash": "f1d9a950b755",
+      "diff_summary": "No previous content to compare",
+      "added": [],
+      "removed": []
+    }
+  },
+  {
+    "id": "chg_91f39bbcd0e7",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/articles/business-impact-of-recognition",
+    "change_type": "schema_change",
+    "title": "How Employee Recognition Impacts Business Initiatives at Large Companies",
+    "details": {
+      "added_schemas": [
+        "Article"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_53ea6605a389",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/podcasts/designing-a-workplace-that-reflects-your-values-with-guest-meghan-tuohig",
+    "change_type": "schema_change",
+    "title": "Designing a Workplace That Reflects Your Values With Guest Meghan Tuohig",
+    "details": {
+      "added_schemas": [
+        "PodcastEpisode"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_a9b9585cf55e",
+    "timestamp": "2026-03-25T06:26:04.880983+00:00",
+    "competitor": "O.C. Tanner",
+    "domain": "octanner.com",
+    "url": "https://www.octanner.com/articles/how-to-measure-the-roi-of-employee-recognition",
+    "change_type": "content_update",
+    "title": "How To Track the ROI of Employee Recognition",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "9214236b5d16",
+      "new_hash": "42e2fee7e183",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 5,
+      "old_word_count": 2671,
+      "new_word_count": 2676
+    }
+  },
+  {
+    "id": "chg_6a7ba72915a5",
+    "timestamp": "2026-03-25T06:28:26.917353+00:00",
+    "competitor": "Workhuman",
+    "domain": "workhuman.com",
+    "url": "https://www.workhuman.com/blog/15-ways-recognition-builds-a-better-employee-deal/",
+    "change_type": "new_page",
+    "title": "15 Ways Employee Recognition Builds a Better Employer Deal",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 3315,
+      "h1": "15 Ways Recognition Builds A Better Employer Deal",
+      "schemas": [
+        "BreadcrumbList"
+      ]
+    }
+  },
+  {
+    "id": "chg_efee9a831cb2",
+    "timestamp": "2026-03-25T06:28:26.917353+00:00",
+    "competitor": "Workhuman",
+    "domain": "workhuman.com",
+    "url": "https://www.workhuman.com/resources/",
+    "change_type": "content_update",
+    "title": "Workhuman Resource Center",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "516a5258dc67",
+      "new_hash": "ede02ce27965",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": -21,
+      "old_word_count": 508,
+      "new_word_count": 487
+    }
+  },
+  {
+    "id": "chg_a284bede46cc",
+    "timestamp": "2026-03-25T06:28:26.917353+00:00",
+    "competitor": "Workhuman",
+    "domain": "workhuman.com",
+    "url": "https://www.workhuman.com/blog/",
+    "change_type": "content_update",
+    "title": "Workhuman Blog",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "ef7b7a12c579",
+      "new_hash": "97203b3d5b66",
+      "diff_summary": "5 section(s) added, 5 section(s) removed",
+      "added": [
+        "home blog research blogs explore topics audience featured 15 ways recognition builds a better employer deal most organizations think their employer de",
+        "their employees know better.",
+        "the deal that actually determines whether people stay, engage, and give their best is lived in thousands of small daily moments — and recognition shap",
+        "here are 15 ways it does exactly that.",
+        "boost the roi of your recognition program: the science behind investing in your reward store"
+      ],
+      "removed": [
+        "home blog research blogs explore topics audience featured boost the roi of your recognition program:",
+        "the science behind investing in your reward store experience discover how enhancing your reward store",
+        "experience can maximize your recognition program roi, boost employee engagement, and drive long-term results.",
+        "if 10 historical leaders ran your recognition program what would julius caesar, queen elizabeth i, marie curie, and harriet tubman reward if they had ",
+        "this cheeky thought experiment imagines ten historical leaders running a modern recognition program—and pulls out"
+      ],
+      "word_count_change": 10,
+      "old_word_count": 801,
+      "new_word_count": 811
+    }
+  },
+  {
+    "id": "chg_900f07fac209",
+    "timestamp": "2026-03-25T06:28:26.917353+00:00",
+    "competitor": "Workhuman",
+    "domain": "workhuman.com",
+    "url": "https://www.workhuman.com/topics/company-culture/",
+    "change_type": "content_update",
+    "title": "Company Culture | Workhuman",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "6104fb64d423",
+      "new_hash": "cc67b1bcd10d",
+      "diff_summary": "5 section(s) added, 5 section(s) removed",
+      "added": [
+        "resources menu company culture home topic: company culture research blogs explore topics audience 15 ways",
+        "recognition builds a better employer deal most organizations think their employer deal is their compensation",
+        "their employees know better.",
+        "the deal that actually determines whether people stay, engage, and give their best is lived in thousands of small daily moments — and recognition shap",
+        "here are 15 ways it does exactly that."
+      ],
+      "removed": [
+        "resources menu company culture home topic: company culture research blogs explore topics audience what’s in and what’s out for 2026?",
+        "employee motivation strategies that actually work: how recognition and rewards drive lasting employee engagement discover",
+        "employee motivation strategies that fuel sustained engagement, backed by workhuman’s latest findings on the powerful",
+        "impact tangible rewards have on motivating employees.",
+        "how to measure company culture: metrics, tools, and tips to quantify your initiatives positive company culture is a great differentiator when it comes"
+      ],
+      "word_count_change": 34,
+      "old_word_count": 374,
+      "new_word_count": 408
+    }
+  },
+  {
+    "id": "chg_8183c2a7da7f",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/customer-stories/greenfield-global",
+    "change_type": "new_page",
+    "title": "Greenfield Global | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 2694,
+      "h1": "Récolter une culture plus forte grâce à la chimie des connexions"
+    }
+  },
+  {
+    "id": "chg_e6a41d8a6ece",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/blog/the-awardco-recognize-awards",
+    "change_type": "new_page",
+    "title": "Highlighting Employee Recognition Success | Recognize Awards",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 795,
+      "h1": "Blogue",
+      "schemas": [
+        "BlogPosting"
+      ]
+    }
+  },
+  {
+    "id": "chg_5ae07722e987",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/ca/events-webinars/rcgnz-new-york-city-lunch-n-learn",
+    "change_type": "new_page",
+    "title": "RCGNZ New York City Lunch 'n Learn | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 643,
+      "h1": "Social Networking Event"
+    }
+  },
+  {
+    "id": "chg_be18e8b647a2",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/events-webinars/rcgnz-new-york-city-lunch-n-learn",
+    "change_type": "new_page",
+    "title": "RCGNZ New York City Lunch 'n Learn | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 643,
+      "h1": "Social Networking Event"
+    }
+  },
+  {
+    "id": "chg_dc5cdc29f9a4",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/blog/the-awardco-recognize-awards",
+    "change_type": "new_page",
+    "title": "Highlighting Employee Recognition Success | Recognize Awards",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 717,
+      "h1": "Blog",
+      "schemas": [
+        "BlogPosting"
+      ]
+    }
+  },
+  {
+    "id": "chg_8db8ba51afc7",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/events-webinars/from-nomination-to-winner-4refuels-recognize-award-journey",
+    "change_type": "new_page",
+    "title": "From Nomination to Winner: 4Refuel’s Recognize Award Journey | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 888,
+      "h1": "Webinar"
+    }
+  },
+  {
+    "id": "chg_8befc5b1ea47",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/uk/blog/the-awardco-recognize-awards",
+    "change_type": "new_page",
+    "title": "Highlighting Employee Recognition Success | Recognize Awards",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 740,
+      "h1": "Blog",
+      "schemas": [
+        "BlogPosting"
+      ]
+    }
+  },
+  {
+    "id": "chg_e70d3e6121a5",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/ca/blog/the-awardco-recognize-awards",
+    "change_type": "new_page",
+    "title": "Highlighting Employee Recognition Success | Recognize Awards",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 717,
+      "h1": "Blog",
+      "schemas": [
+        "BlogPosting"
+      ]
+    }
+  },
+  {
+    "id": "chg_dca5c4bea0eb",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/uk/events-webinars/rcgnz-new-york-city-lunch-n-learn",
+    "change_type": "new_page",
+    "title": "RCGNZ New York City Lunch 'n Learn | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 643,
+      "h1": "Social Networking Event"
+    }
+  },
+  {
+    "id": "chg_8ff7a330f43b",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/uk/customer-stories/greenfield-global",
+    "change_type": "new_page",
+    "title": "Greenfield Global | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 2125,
+      "h1": "Harvesting a stronger culture through connection chemistry"
+    }
+  },
+  {
+    "id": "chg_7ef5fa9908a7",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/ca/customer-stories/greenfield-global",
+    "change_type": "new_page",
+    "title": "Greenfield Global | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 2123,
+      "h1": "Harvesting a stronger culture through connection chemistry"
+    }
+  },
+  {
+    "id": "chg_94ee029d1db0",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/uk/events-webinars/from-nomination-to-winner-4refuels-recognize-award-journey",
+    "change_type": "new_page",
+    "title": "From Nomination to Winner: 4Refuel’s Recognize Award Journey | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 861,
+      "h1": "Webinar"
+    }
+  },
+  {
+    "id": "chg_f5f5a390b82a",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/events-webinars/from-nomination-to-winner-4refuels-recognize-award-journey",
+    "change_type": "new_page",
+    "title": "From Nomination to Winner: 4Refuel’s Recognize Award Journey | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 861,
+      "h1": "Webinar"
+    }
+  },
+  {
+    "id": "chg_2680dd5e0cdf",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/events-webinars/rcgnz-new-york-city-lunch-n-learn",
+    "change_type": "new_page",
+    "title": "RCGNZ New York City Lunch 'n Learn | Awardco",
+    "details": {
+      "source": "sitemap",
+      "published_date": null,
+      "summary": "",
+      "word_count": 670,
+      "h1": "Social Networking Event"
+    }
+  },
+  {
+    "id": "chg_6a7e71b73f9b",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/ca/blog/employee-motivation-strategies-ideas-and-gifts",
+    "change_type": "schema_change",
+    "title": "Employee Motivation Strategies, Ideas, and Gifts",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_3862a7c97458",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/blog/restoring-the-heart-in-healthcare-with-recognition",
+    "change_type": "schema_change",
+    "title": "How Recognition Transforms Healthcare Culture",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_8fc50630cb3a",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/blog/the-responsible-role-of-ai-in-hr",
+    "change_type": "schema_change",
+    "title": "AI in HR: Embracing Responsibility and Ethical Practices",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_4e1a3ed4bfe5",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/blog/impacting-change-in-hr-insights-from-hr-leaders",
+    "change_type": "schema_change",
+    "title": "HR Leaders Discuss How to Drive Change with HR Initiatives",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_208d6cdd991b",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/blog/recognition-fuels-engagement-downloadable-infographic",
+    "change_type": "schema_change",
+    "title": "Infographic: How Recognition Fuels Engagement",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_4c1a3e3ee8ed",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/blog/recognizing-and-engaging-generations-at-work",
+    "change_type": "schema_change",
+    "title": "Generational Intelligence: The Missing Piece in Your Recognition Strategy",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_266a96ae84b4",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/blog/the-purpose-benefits-and-data-backed-strategies-for-an-employee-engagement-survey",
+    "change_type": "schema_change",
+    "title": "Employee Engagement Survey: How to Get Impactful Feedback",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_5fefbd92fa6b",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/blog/goodness-grant-december-2022-jason-hansen",
+    "change_type": "schema_change",
+    "title": "Lauréat de la bourse Goodness de décembre 2022 : Jason Hansen",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_f453b34e92ae",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/platform/nominations",
+    "change_type": "schema_change",
+    "title": "Boost Employee Engagement with Award Nominations from Awardco",
+    "details": {
+      "added_schemas": [
+        "SoftwareApplication"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_c452c5f7817c",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/blog/goodness-grant-sept-2023-amber-leck",
+    "change_type": "schema_change",
+    "title": "Lauréat de la bourse Goodness de septembre 2023 : Mark et Amber Leck",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_b1cf39af8b18",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/blog/trends-in-employee-recognition",
+    "change_type": "schema_change",
+    "title": "Trends in Employee Recognition for 2026 and Beyond",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_991d57498841",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/blog/importance-of-work-life-balance",
+    "change_type": "schema_change",
+    "title": "Promoting Work-Life Balance: Why It Matters in Your Workplace",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_a6aba277f883",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/ca/blog/microsoft-teams-employee-recognition-integration",
+    "change_type": "schema_change",
+    "title": "Awardco: Integration with Microsoft Teams",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_47646ef6f835",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/ca/blog/why-buy-employee-appreciation-gifts-in-bulk",
+    "change_type": "schema_change",
+    "title": "Why Buy Employee Appreciation Gifts in Bulk?",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_8eb87f81819e",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/ca/blog/4-tips-to-keep-employees-motivated-even-during-hard-times",
+    "change_type": "schema_change",
+    "title": "4 Tips to Keep Employees Motivated Even During Hard Times",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_c5f179f6ddb1",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/ca/blog/the-role-of-incentives-in-employee-motivation",
+    "change_type": "schema_change",
+    "title": "Employee Incentive Strategies That Improve Motivation",
+    "details": {
+      "added_schemas": [
+        "Article",
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
+    "id": "chg_7cbbf179de35",
+    "timestamp": "2026-03-25T06:30:51.757175+00:00",
+    "competitor": "Awardco",
+    "domain": "awardco.com",
+    "url": "https://www.awardco.com/fr-ca/blog/year-end-bonuses",
+    "change_type": "schema_change",
+    "title": "Year End Bonus: Crafting the Perfect Reward for Employees",
+    "details": {
+      "added_schemas": [
+        "BlogPosting"
+      ],
+      "removed_schemas": []
+    }
+  },
+  {
     "id": "chg_78b475999d37",
     "timestamp": "2026-03-25T04:32:17.815707+00:00",
     "competitor": "Advantage Club",
