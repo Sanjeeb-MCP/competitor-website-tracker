@@ -108,8 +108,15 @@ def _extract_schemas(soup: BeautifulSoup) -> list[str]:
 
 def generate_diff_summary(old_text: str, new_text: str) -> dict:
     """Generate a human-readable diff summary between old and new content."""
-    if not old_text or not new_text:
-        return {"added": [], "removed": [], "summary": "No previous content to compare"}
+    if not old_text and not new_text:
+        return {"added": [], "removed": [], "summary": "No content available"}
+    if not old_text:
+        # First time we have a snippet — show new content as "added"
+        sentences = _split_sentences(new_text)[:5]
+        return {"added": [s[:150] for s in sentences], "removed": [], "summary": f"Content captured ({len(new_text.split())} words)"}
+    if not new_text:
+        sentences = _split_sentences(old_text)[:5]
+        return {"added": [], "removed": [s[:150] for s in sentences], "summary": "Content removed"}
 
     old_sentences = _split_sentences(old_text)
     new_sentences = _split_sentences(new_text)

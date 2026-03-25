@@ -210,10 +210,9 @@ function renderTimeline() {
 function renderChangeItem(c) {
   const badge = `<span class="badge badge-${c.change_type}">${formatType(c.change_type)}</span>`;
   const details = renderDetails(c);
-  const hasDropdown = c.change_type === "content_update" && c.details &&
-    ((c.details.added && c.details.added.length) || (c.details.removed && c.details.removed.length));
+  // Always show dropdown for content_update
   let dropdown = "";
-  if (hasDropdown) {
+  if (c.change_type === "content_update" && c.details) {
     dropdown = `<div class="dropdown-toggle" onclick="toggleDrop(this)">[+] VIEW CONTENT DIFF</div>
       <div class="dropdown-content" style="display:none">${renderDiff(c.details)}</div>`;
   }
@@ -241,9 +240,36 @@ function renderChangeItem(c) {
 
 function renderDiff(d) {
   let h = "";
-  if (d.added?.length) { h += '<div class="diff-section"><div class="diff-label diff-added-label">+ ADDED</div>'; d.added.forEach(l=>h+=`<div class="diff-line diff-added">+ ${esc(l)}</div>`); h+="</div>"; }
-  if (d.removed?.length) { h += '<div class="diff-section"><div class="diff-label diff-removed-label">- REMOVED</div>'; d.removed.forEach(l=>h+=`<div class="diff-line diff-removed">- ${esc(l)}</div>`); h+="</div>"; }
-  return h || '<div class="diff-section">MINOR TEXT CHANGES DETECTED</div>';
+  if (d.added?.length) {
+    h += '<div class="diff-section"><div class="diff-label diff-added-label">+ ADDED</div>';
+    d.added.forEach(l => h += `<div class="diff-line diff-added">+ ${esc(l)}</div>`);
+    h += "</div>";
+  }
+  if (d.removed?.length) {
+    h += '<div class="diff-section"><div class="diff-label diff-removed-label">- REMOVED</div>';
+    d.removed.forEach(l => h += `<div class="diff-line diff-removed">- ${esc(l)}</div>`);
+    h += "</div>";
+  }
+  if (!h) {
+    // No diff data yet — show what we know
+    let info = '<div class="diff-section">';
+    if (d.diff_summary) {
+      info += `<div class="diff-line" style="border-left:3px solid var(--yellow);color:var(--yellow);padding:4px 8px">${esc(d.diff_summary)}</div>`;
+    }
+    if (d.old_hash && d.new_hash) {
+      info += `<div style="font-size:0.7rem;color:var(--text-muted);margin-top:6px;font-family:var(--mono-font)">Hash changed: ${esc(d.old_hash)} → ${esc(d.new_hash)}</div>`;
+    }
+    if (d.word_count_change) {
+      const sign = d.word_count_change > 0 ? "+" : "";
+      info += `<div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px">Word count: ${d.old_word_count || "?"} → ${d.new_word_count || "?"} (${sign}${d.word_count_change})</div>`;
+    }
+    if (!d.diff_summary && !d.old_hash) {
+      info += '<div style="color:var(--text-muted)">Content diff will be available after the next crawl cycle.</div>';
+    }
+    info += "</div>";
+    h = info;
+  }
+  return h;
 }
 
 function toggleDrop(el) {
