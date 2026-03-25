@@ -221,8 +221,21 @@ def detect_changes(
 
     # --- Missing pages ---
     missing_urls = previous_url_set - current_url_set
+
+    # Safety check: if >50% of previously known pages are "missing", it's likely
+    # a crawl failure (site blocking, sitemap down) — not real removals.
+    # Keep all pages in state and skip removal detection.
+    if previous_url_set and len(missing_urls) > len(previous_url_set) * 0.5:
+        logger.warning(
+            "%s: %d of %d pages missing (>50%%) — likely crawl failure, skipping removals",
+            domain, len(missing_urls), len(previous_url_set),
+        )
+        for url in missing_urls:
+            updated_pages[url] = dict(previous_pages[url])
+        return changes, updated_pages
+
     checked_count = 0
-    max_missing_checks = 20
+    max_missing_checks = 50  # Check up to 50 missing URLs for redirects
 
     for url in missing_urls:
         prev = previous_pages[url]
@@ -232,6 +245,7 @@ def detect_changes(
         page_data["last_seen"] = prev.get("last_seen", now)
 
         if consecutive >= removal_threshold and not is_first_run:
+            # Always check redirect status for removed pages
             redirect_info = None
             noindex = False
             if http_client and checked_count < max_missing_checks:
