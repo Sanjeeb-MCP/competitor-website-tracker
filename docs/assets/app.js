@@ -57,14 +57,25 @@ document.querySelectorAll(".nav-item").forEach(item => {
     document.getElementById("overview-filters").style.display = tab === "overview" ? "flex" : "none";
     document.getElementById("changes-filters").style.display = tab === "changes" ? "flex" : "none";
     // Close sidebar on mobile after selecting a tab
-    document.querySelector(".sidebar").classList.remove("open");
-    document.getElementById("sidebar-overlay").classList.remove("active");
+    closeSidebar();
   });
 });
 
 function toggleSidebar() {
-  document.querySelector(".sidebar").classList.toggle("open");
-  document.getElementById("sidebar-overlay").classList.toggle("active");
+  const sidebar = document.querySelector(".sidebar");
+  const overlay = document.getElementById("sidebar-overlay");
+  const isOpen = sidebar.classList.contains("open");
+  if (isOpen) {
+    closeSidebar();
+  } else {
+    sidebar.classList.add("open");
+    overlay.classList.add("active");
+  }
+}
+
+function closeSidebar() {
+  document.querySelector(".sidebar").classList.remove("open");
+  document.getElementById("sidebar-overlay").classList.remove("active");
 }
 
 // --- Global Stats ---
