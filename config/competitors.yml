@@ -3,7 +3,7 @@ settings:
   max_hash_per_domain: 50
   request_delay_seconds: 2
   request_timeout_seconds: 30
-  max_changes_history: 5000
+  max_changes_history: 50000
   removal_threshold_runs: 2
 
 competitors:
