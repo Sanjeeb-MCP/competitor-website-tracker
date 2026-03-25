@@ -29,6 +29,7 @@ def detect_changes(
     previous_url_set = set(previous_pages.keys())
 
     # --- URL case changes ---
+    # Only flag if the URL differs in more than just trailing slash or minor normalization
     if not is_first_run:
         case_changes = _detect_url_case_changes(current_url_set, previous_url_set)
         for old_url, new_url in case_changes:
@@ -120,9 +121,13 @@ def detect_changes(
             page_data["canonical"] = h.get("canonical", "")
             page_data["schemas"] = h.get("schemas", [])
 
-            if not is_first_run:
-                # Content update
-                if old_hash and new_hash and old_hash != new_hash:
+            # Only compare if both old and new data exist (prevents false positives
+            # when a page is hashed for the first time on a later run)
+            has_baseline = bool(old_hash)
+
+            if not is_first_run and has_baseline:
+                # --- Content update ---
+                if new_hash and old_hash != new_hash:
                     old_snippet = prev.get("content_snippet", "")
                     new_snippet = h.get("content_snippet", "")
                     diff = generate_diff_summary(old_snippet, new_snippet)
@@ -155,7 +160,40 @@ def detect_changes(
                         "details": details,
                     })
 
-                # H1 change
+                # --- Title change (always check, not just when content is same) ---
+                old_title = prev.get("title", "")
+                new_title = h.get("title", "")
+                if old_title and new_title and old_title != new_title:
+                    changes.append({
+                        "id": _generate_id(now, domain, url + ":title"),
+                        "timestamp": now,
+                        "competitor": competitor_name,
+                        "domain": domain,
+                        "url": url,
+                        "change_type": "title_change",
+                        "title": new_title,
+                        "details": {"old_title": old_title, "new_title": new_title},
+                    })
+
+                # --- Meta description change (always check) ---
+                old_meta = prev.get("meta_description", "")
+                new_meta = h.get("meta_description", "")
+                if old_meta and new_meta and old_meta != new_meta:
+                    changes.append({
+                        "id": _generate_id(now, domain, url + ":meta"),
+                        "timestamp": now,
+                        "competitor": competitor_name,
+                        "domain": domain,
+                        "url": url,
+                        "change_type": "meta_change",
+                        "title": page_data["title"],
+                        "details": {
+                            "old_meta": old_meta[:150],
+                            "new_meta": new_meta[:150],
+                        },
+                    })
+
+                # --- H1 change ---
                 old_h1 = prev.get("h1_tags", [])
                 new_h1 = h.get("h1_tags", [])
                 if old_h1 and new_h1 and old_h1 != new_h1:
@@ -170,10 +208,10 @@ def detect_changes(
                         "details": {"old_h1": old_h1[0], "new_h1": new_h1[0]},
                     })
 
-                # Schema changes
+                # --- Schema changes ---
                 old_schemas = set(prev.get("schemas", []))
                 new_schemas = set(h.get("schemas", []))
-                if old_schemas != new_schemas:
+                if old_schemas and new_schemas and old_schemas != new_schemas:
                     added_s = list(new_schemas - old_schemas)
                     removed_s = list(old_schemas - new_schemas)
                     if added_s or removed_s:
@@ -188,43 +226,12 @@ def detect_changes(
                             "details": {"added_schemas": added_s, "removed_schemas": removed_s},
                         })
 
-                # Title change (only if content hash is same)
-                if old_hash == new_hash:
-                    if h.get("title") and prev.get("title") and h["title"] != prev["title"]:
-                        changes.append({
-                            "id": _generate_id(now, domain, url + ":title"),
-                            "timestamp": now,
-                            "competitor": competitor_name,
-                            "domain": domain,
-                            "url": url,
-                            "change_type": "title_change",
-                            "title": h["title"],
-                            "details": {"old_title": prev["title"], "new_title": h["title"]},
-                        })
-                    if (h.get("meta_description") and prev.get("meta_description")
-                            and h["meta_description"] != prev["meta_description"]):
-                        changes.append({
-                            "id": _generate_id(now, domain, url + ":meta"),
-                            "timestamp": now,
-                            "competitor": competitor_name,
-                            "domain": domain,
-                            "url": url,
-                            "change_type": "meta_change",
-                            "title": page_data["title"],
-                            "details": {
-                                "old_meta": prev["meta_description"][:100],
-                                "new_meta": h["meta_description"][:100],
-                            },
-                        })
-
         updated_pages[url] = page_data
 
     # --- Missing pages ---
     missing_urls = previous_url_set - current_url_set
 
-    # Safety check: if >50% of previously known pages are "missing", it's likely
-    # a crawl failure (site blocking, sitemap down) — not real removals.
-    # Keep all pages in state and skip removal detection.
+    # Safety: if >50% missing, likely a crawl failure — skip removals
     if previous_url_set and len(missing_urls) > len(previous_url_set) * 0.5:
         logger.warning(
             "%s: %d of %d pages missing (>50%%) — likely crawl failure, skipping removals",
@@ -235,7 +242,7 @@ def detect_changes(
         return changes, updated_pages
 
     checked_count = 0
-    max_missing_checks = 50  # Check up to 50 missing URLs for redirects
+    max_missing_checks = 50
 
     for url in missing_urls:
         prev = previous_pages[url]
@@ -245,16 +252,18 @@ def detect_changes(
         page_data["last_seen"] = prev.get("last_seen", now)
 
         if consecutive >= removal_threshold and not is_first_run:
-            # Always check redirect status for removed pages
             redirect_info = None
             noindex = False
             if http_client and checked_count < max_missing_checks:
                 checked_count += 1
                 status = http_client.check_status(url)
-                if status.get("redirect_to"):
+                redirect_to = status.get("redirect_to")
+
+                # Filter out trivial redirects (trailing slash, same domain normalization)
+                if redirect_to and not _is_trivial_redirect(url, redirect_to):
                     redirect_info = {
                         "status_code": status["status_code"],
-                        "redirect_to": status["redirect_to"],
+                        "redirect_to": redirect_to,
                     }
                 noindex = status.get("noindex", False)
 
@@ -283,17 +292,40 @@ def detect_changes(
     return changes, updated_pages
 
 
+def _is_trivial_redirect(original_url: str, redirect_url: str) -> bool:
+    """Check if a redirect is just a trailing slash or www normalization (not meaningful)."""
+    # Normalize both
+    a = original_url.rstrip("/").lower()
+    b = redirect_url.rstrip("/").lower()
+
+    # Same URL after normalizing trailing slash
+    if a == b:
+        return True
+
+    # www vs non-www
+    a_no_www = a.replace("://www.", "://")
+    b_no_www = b.replace("://www.", "://")
+    if a_no_www == b_no_www:
+        return True
+
+    return False
+
+
 def _detect_url_case_changes(current_urls, previous_urls):
+    """Detect URLs that changed only in case. Filter out trivial differences."""
     current_lower = {}
     for url in current_urls:
-        current_lower.setdefault(url.lower(), []).append(url)
+        current_lower.setdefault(url.lower().rstrip("/"), []).append(url)
     changes = []
     missing = previous_urls - current_urls
     for old_url in missing:
-        matches = current_lower.get(old_url.lower(), [])
+        key = old_url.lower().rstrip("/")
+        matches = current_lower.get(key, [])
         for new_url in matches:
             if new_url != old_url and new_url not in previous_urls:
-                changes.append((old_url, new_url))
+                # Only report if the path actually changed case, not just trailing slash
+                if old_url.rstrip("/") != new_url.rstrip("/"):
+                    changes.append((old_url, new_url))
     return changes
 
 
