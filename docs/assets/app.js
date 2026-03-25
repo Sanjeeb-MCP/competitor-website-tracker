@@ -56,11 +56,15 @@ document.querySelectorAll(".nav-item").forEach(item => {
       tab === "overview" ? "Overview" : tab === "changes" ? "Changes" : "Activity";
     document.getElementById("overview-filters").style.display = tab === "overview" ? "flex" : "none";
     document.getElementById("changes-filters").style.display = tab === "changes" ? "flex" : "none";
+    // Close sidebar on mobile after selecting a tab
+    document.querySelector(".sidebar").classList.remove("open");
+    document.getElementById("sidebar-overlay").classList.remove("active");
   });
 });
 
 function toggleSidebar() {
   document.querySelector(".sidebar").classList.toggle("open");
+  document.getElementById("sidebar-overlay").classList.toggle("active");
 }
 
 // --- Global Stats ---
