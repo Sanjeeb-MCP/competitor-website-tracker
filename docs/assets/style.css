@@ -525,57 +525,123 @@ body {
   color: var(--text-primary);
   margin-bottom: 20px;
 }
-.chart-container { overflow-x: auto; }
-.chart {
+/* Horizontal bar chart */
+.h-chart {
   display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  height: 180px;
-  padding-bottom: 30px;
-  min-width: 600px;
+  flex-direction: column;
+  gap: 6px;
 }
-.chart-bar-group {
-  display: flex;
-  gap: 2px;
-  align-items: flex-end;
-  flex: 1;
-  min-width: 44px;
-  position: relative;
-}
-.chart-bar {
-  flex: 1;
-  border-radius: 3px 3px 0 0;
-  min-height: 2px;
-  transition: height 0.4s ease;
-  cursor: default;
-  opacity: 0.85;
-}
-.chart-bar:hover { opacity: 1; }
-.chart-bar-label {
-  position: absolute;
-  bottom: -24px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-.chart-legend {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-top: 14px;
-}
-.legend-item {
+.h-chart-row {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.78rem;
-  color: var(--text-secondary);
+  gap: 12px;
 }
-.legend-dot {
-  width: 10px; height: 10px;
-  border-radius: 3px;
+.h-chart-label {
+  width: 120px;
+  min-width: 120px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.h-chart-bar-wrap {
+  flex: 1;
+  height: 24px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.h-chart-bar {
+  height: 100%;
+  border-radius: 4px;
+  min-width: 2px;
+  transition: width 0.6s ease;
+}
+.h-chart-value {
+  width: 40px;
+  min-width: 40px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: right;
+}
+.h-chart-spark {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  padding-left: 132px;
+  margin-top: -2px;
+  margin-bottom: 4px;
+}
+
+/* Weekly breakdown table */
+.week-table {
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.week-table-header,
+.week-table-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 0;
+}
+.week-table-header {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+.week-table-header .week-table-cell {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.week-table-header .week-table-name {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.week-table-name {
+  width: 120px;
+  min-width: 120px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.week-table-cell {
+  flex: 1;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .h-chart-label {
+    width: 80px;
+    min-width: 80px;
+    font-size: 0.72rem;
+  }
+  .h-chart-spark {
+    padding-left: 92px;
+    font-size: 0.65rem;
+  }
+  .week-table-name {
+    width: 80px;
+    min-width: 80px;
+    font-size: 0.7rem;
+  }
+  .week-table-cell {
+    font-size: 0.7rem;
+  }
 }
 
 /* ── Pagination ── */

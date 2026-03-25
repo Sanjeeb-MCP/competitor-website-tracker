@@ -311,39 +311,84 @@ function renderDetails(c) {
 
 // --- Charts ---
 function renderCharts() {
-  renderBarChart("pub-chart", "new_page");
-  renderBarChart("activity-chart", null);
+  renderHorizontalChart("pub-chart", "new_page");
+  renderHorizontalChart("activity-chart", null);
 }
 
-function renderBarChart(containerId, filterType) {
+function renderHorizontalChart(containerId, filterType) {
   const container = document.getElementById(containerId);
   const competitors = Object.entries(state.competitors || {});
-  if (!competitors.length || !changes.length) { container.innerHTML = '<div class="empty-state">Not enough data yet. Charts will populate after more crawl cycles.</div>'; return; }
-  const weeks = {};
-  const rel = filterType ? changes.filter(c=>c.change_type===filterType) : changes;
-  rel.forEach(c => {
-    const d = new Date(c.timestamp); const ws = new Date(d); ws.setDate(d.getDate()-d.getDay());
-    const key = ws.toISOString().slice(0,10);
-    if (!weeks[key]) weeks[key] = {};
-    weeks[key][c.domain] = (weeks[key][c.domain]||0) + 1;
-  });
-  const sorted = Object.keys(weeks).sort().slice(-12);
-  if (!sorted.length) { container.innerHTML = '<div class="empty-state">Not enough data yet. Charts will populate after more crawl cycles.</div>'; return; }
-  const domains = competitors.map(([d])=>d);
-  const maxVal = Math.max(...sorted.map(w=>Math.max(...domains.map(d=>weeks[w]?.[d]||0))),1);
+  if (!competitors.length || !changes.length) {
+    container.innerHTML = '<div class="empty-state">Not enough data yet. Charts will populate after more crawl cycles.</div>';
+    return;
+  }
 
-  let barsHtml = "";
-  sorted.forEach(week => {
-    let bars = "";
-    domains.forEach((domain,i) => {
-      const val = weeks[week]?.[domain]||0;
-      bars += `<div class="chart-bar" style="height:${val/maxVal*140}px;background:${COLORS[i%COLORS.length]}" title="${competitors[i][1].name}: ${val}"></div>`;
-    });
-    barsHtml += `<div class="chart-bar-group">${bars}<span class="chart-bar-label">${new Date(week).toLocaleDateString("en-US",{month:"short",day:"numeric"})}</span></div>`;
+  // Aggregate per competitor
+  const rel = filterType ? changes.filter(c => c.change_type === filterType) : changes;
+  const totals = {};
+  const weeklyData = {};
+  rel.forEach(c => {
+    totals[c.domain] = (totals[c.domain] || 0) + 1;
+    const d = new Date(c.timestamp);
+    const ws = new Date(d); ws.setDate(d.getDate() - d.getDay());
+    const key = ws.toISOString().slice(0, 10);
+    if (!weeklyData[c.domain]) weeklyData[c.domain] = {};
+    weeklyData[c.domain][key] = (weeklyData[c.domain][key] || 0) + 1;
   });
-  let legend = '<div class="chart-legend">';
-  competitors.forEach(([d,data],i) => legend += `<div class="legend-item"><div class="legend-dot" style="background:${COLORS[i%COLORS.length]}"></div>${esc(data.name)}</div>`);
-  container.innerHTML = `<div class="chart">${barsHtml}</div>${legend}</div>`;
+
+  const maxVal = Math.max(...Object.values(totals), 1);
+
+  let html = '<div class="h-chart">';
+  competitors.forEach(([domain, data], i) => {
+    const total = totals[domain] || 0;
+    const pct = (total / maxVal * 100).toFixed(1);
+    const color = COLORS[i % COLORS.length];
+
+    // Get last 4 weeks breakdown
+    const weeks = Object.keys(weeklyData[domain] || {}).sort().slice(-4);
+    const weekNums = weeks.map(w => weeklyData[domain][w]);
+    const sparkline = weekNums.length > 1 ? weekNums.join(" → ") : "";
+
+    html += `
+      <div class="h-chart-row">
+        <div class="h-chart-label">${esc(data.name)}</div>
+        <div class="h-chart-bar-wrap">
+          <div class="h-chart-bar" style="width:${pct}%;background:${color}"></div>
+        </div>
+        <div class="h-chart-value" style="color:${color}">${total}</div>
+      </div>
+      ${sparkline ? `<div class="h-chart-spark">Last 4 weeks: ${sparkline}</div>` : ""}
+    `;
+  });
+  html += '</div>';
+
+  // Weekly breakdown table
+  const allWeeks = new Set();
+  Object.values(weeklyData).forEach(wd => Object.keys(wd).forEach(w => allWeeks.add(w)));
+  const sortedWeeks = [...allWeeks].sort().slice(-6);
+
+  if (sortedWeeks.length > 1) {
+    html += '<div class="week-table">';
+    html += '<div class="week-table-header"><span class="week-table-name">Competitor</span>';
+    sortedWeeks.forEach(w => {
+      const label = new Date(w).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      html += `<span class="week-table-cell">${label}</span>`;
+    });
+    html += '</div>';
+
+    competitors.forEach(([domain, data], i) => {
+      const color = COLORS[i % COLORS.length];
+      html += `<div class="week-table-row"><span class="week-table-name" style="color:${color}">${esc(data.name)}</span>`;
+      sortedWeeks.forEach(w => {
+        const val = weeklyData[domain]?.[w] || 0;
+        html += `<span class="week-table-cell">${val || '<span style="opacity:0.3">—</span>'}</span>`;
+      });
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
 }
 
 // --- Excel Export ---
