@@ -34,7 +34,7 @@ function initDatePickers() {
 
 function renderAll() {
   document.getElementById("last-updated").textContent =
-    "LAST SYNC: " + (state.last_run ? formatDate(state.last_run) : "---");
+    "Last sync: " + (state.last_run ? formatDate(state.last_run) : "—");
   renderGlobalStats();
   renderCompetitorCards();
   populateFilters();
@@ -53,7 +53,7 @@ document.querySelectorAll(".nav-item").forEach(item => {
     document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
     document.getElementById("tab-" + tab).classList.add("active");
     document.getElementById("page-title").textContent =
-      tab === "overview" ? "// OVERVIEW" : tab === "changes" ? "// CHANGES" : "// ACTIVITY";
+      tab === "overview" ? "Overview" : tab === "changes" ? "Changes" : "Activity";
     document.getElementById("overview-filters").style.display = tab === "overview" ? "flex" : "none";
     document.getElementById("changes-filters").style.display = tab === "changes" ? "flex" : "none";
   });
@@ -72,11 +72,11 @@ function renderGlobalStats() {
   const wc = changes.filter(ch => new Date(ch.timestamp) >= weekAgo);
 
   document.getElementById("global-stats").innerHTML = `
-    <div class="stat-card"><div class="stat-label">TARGETS</div><div class="stat-value">${Object.keys(c).length}</div><div class="stat-sub">competitors tracked</div></div>
-    <div class="stat-card"><div class="stat-label">PAGES INDEXED</div><div class="stat-value">${totalPages.toLocaleString()}</div><div class="stat-sub">total discovered</div></div>
-    <div class="stat-card"><div class="stat-label">NEW INTEL (7D)</div><div class="stat-value">${wc.filter(ch=>ch.change_type==="new_page").length}</div><div class="stat-sub">new pages</div></div>
-    <div class="stat-card"><div class="stat-label">UPDATES (7D)</div><div class="stat-value">${wc.filter(ch=>ch.change_type==="content_update").length}</div><div class="stat-sub">content changes</div></div>
-    <div class="stat-card"><div class="stat-label">TOTAL EVENTS</div><div class="stat-value">${changes.length}</div><div class="stat-sub">all time</div></div>
+    <div class="stat-card"><div class="stat-label">Competitors</div><div class="stat-value">${Object.keys(c).length}</div><div class="stat-sub">actively tracked</div></div>
+    <div class="stat-card"><div class="stat-label">Pages Indexed</div><div class="stat-value">${totalPages.toLocaleString()}</div><div class="stat-sub">total discovered</div></div>
+    <div class="stat-card"><div class="stat-label">New Pages (7d)</div><div class="stat-value">${wc.filter(ch=>ch.change_type==="new_page").length}</div><div class="stat-sub">this week</div></div>
+    <div class="stat-card"><div class="stat-label">Content Updates (7d)</div><div class="stat-value">${wc.filter(ch=>ch.change_type==="content_update").length}</div><div class="stat-sub">this week</div></div>
+    <div class="stat-card"><div class="stat-label">Total Changes</div><div class="stat-value">${changes.length}</div><div class="stat-sub">all time</div></div>
   `;
 }
 
@@ -115,7 +115,7 @@ function renderCompetitorCards() {
     i++;
   }
   if (!Object.keys(competitors).length) {
-    container.innerHTML = '<div class="empty-state">NO TARGETS DETECTED. RUN TRACKER TO INITIALIZE.</div>';
+    container.innerHTML = '<div class="empty-state">No data yet. Run the tracker to start monitoring.</div>';
   }
 }
 
@@ -187,7 +187,7 @@ function renderOverviewTimeline() {
   const container = document.getElementById("overview-timeline");
   document.getElementById("overview-change-count").textContent = `(${filteredOverview.length} total)`;
   if (!filteredOverview.length) {
-    container.innerHTML = '<div class="empty-state">NO INTEL FOR SELECTED TIME RANGE.</div>';
+    container.innerHTML = '<div class="empty-state">No changes found for the selected time range.</div>';
     return;
   }
   container.innerHTML = filteredOverview.slice(0, 10).map(renderChangeItem).join("");
@@ -198,7 +198,7 @@ function renderTimeline() {
   const container = document.getElementById("timeline-list");
   document.getElementById("change-count").textContent = `(${filteredChanges.length})`;
   if (!filteredChanges.length) {
-    container.innerHTML = '<div class="empty-state">NO CHANGES MATCH FILTERS.</div>';
+    container.innerHTML = '<div class="empty-state">No changes match the selected filters.</div>';
     document.getElementById("pagination").innerHTML = "";
     return;
   }
@@ -213,7 +213,7 @@ function renderChangeItem(c) {
   // Always show dropdown for content_update
   let dropdown = "";
   if (c.change_type === "content_update" && c.details) {
-    dropdown = `<div class="dropdown-toggle" onclick="toggleDrop(this)">[+] VIEW CONTENT DIFF</div>
+    dropdown = `<div class="dropdown-toggle" onclick="toggleDrop(this)">View content changes ▾</div>
       <div class="dropdown-content" style="display:none">${renderDiff(c.details)}</div>`;
   }
   let seoTags = "";
@@ -275,7 +275,7 @@ function renderDiff(d) {
 function toggleDrop(el) {
   const c = el.nextElementSibling;
   c.style.display = c.style.display === "none" ? "block" : "none";
-  el.textContent = c.style.display === "none" ? "[+] VIEW CONTENT DIFF" : "[-] HIDE CONTENT DIFF";
+  el.textContent = c.style.display === "none" ? "View content changes ▾" : "Hide content changes ▴";
 }
 
 function renderDetails(c) {
@@ -303,7 +303,7 @@ function renderCharts() {
 function renderBarChart(containerId, filterType) {
   const container = document.getElementById(containerId);
   const competitors = Object.entries(state.competitors || {});
-  if (!competitors.length || !changes.length) { container.innerHTML = '<div class="empty-state">INSUFFICIENT DATA.</div>'; return; }
+  if (!competitors.length || !changes.length) { container.innerHTML = '<div class="empty-state">Not enough data yet. Charts will populate after more crawl cycles.</div>'; return; }
   const weeks = {};
   const rel = filterType ? changes.filter(c=>c.change_type===filterType) : changes;
   rel.forEach(c => {
@@ -313,7 +313,7 @@ function renderBarChart(containerId, filterType) {
     weeks[key][c.domain] = (weeks[key][c.domain]||0) + 1;
   });
   const sorted = Object.keys(weeks).sort().slice(-12);
-  if (!sorted.length) { container.innerHTML = '<div class="empty-state">INSUFFICIENT DATA.</div>'; return; }
+  if (!sorted.length) { container.innerHTML = '<div class="empty-state">Not enough data yet. Charts will populate after more crawl cycles.</div>'; return; }
   const domains = competitors.map(([d])=>d);
   const maxVal = Math.max(...sorted.map(w=>Math.max(...domains.map(d=>weeks[w]?.[d]||0))),1);
 
@@ -371,10 +371,10 @@ function renderPagination() {
   const el = document.getElementById("pagination");
   const tp = Math.ceil(filteredChanges.length/PER_PAGE);
   if (tp<=1) { el.innerHTML=""; return; }
-  let h = `<button ${currentPage===1?"disabled":""} onclick="goToPage(${currentPage-1})">&#9664; PREV</button>`;
+  let h = `<button ${currentPage===1?"disabled":""} onclick="goToPage(${currentPage-1})">Prev</button>`;
   for (let i=Math.max(1,currentPage-2);i<=Math.min(tp,currentPage+2);i++)
     h+=`<button class="${i===currentPage?"active":""}" onclick="goToPage(${i})">${i}</button>`;
-  h+=`<button ${currentPage===tp?"disabled":""} onclick="goToPage(${currentPage+1})">NEXT &#9654;</button>`;
+  h+=`<button ${currentPage===tp?"disabled":""} onclick="goToPage(${currentPage+1})">Next</button>`;
   el.innerHTML=h;
 }
 function goToPage(p){currentPage=p;renderTimeline();window.scrollTo({top:0,behavior:"smooth"});}

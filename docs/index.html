@@ -16,22 +16,22 @@
     <nav class="sidebar">
       <div class="sidebar-brand">
         <div class="brand-icon">CT</div>
-        <span>COMPETITOR<br>TRACKER</span>
+        <span>Competitor<br>Tracker</span>
       </div>
       <div class="sidebar-nav">
         <a href="#" class="nav-item active" data-tab="overview">
-          <span class="nav-icon">&#9632;&#9632;</span> OVERVIEW
+          <span class="nav-icon">&#9632;&#9632;</span> Overview
         </a>
         <a href="#" class="nav-item" data-tab="changes">
-          <span class="nav-icon">&#9650;&#9660;</span> CHANGES
+          <span class="nav-icon">&#9650;&#9660;</span> Changes
         </a>
         <a href="#" class="nav-item" data-tab="activity">
-          <span class="nav-icon">&#9608;&#9608;</span> ACTIVITY
+          <span class="nav-icon">&#9608;&#9608;</span> Activity
         </a>
       </div>
       <div class="sidebar-footer">
         <button class="export-btn" onclick="exportExcel()">
-          &#8615; EXPORT .XLSX
+          &#8615; Export Excel
         </button>
       </div>
     </nav>
@@ -40,11 +40,11 @@
       <header class="topbar">
         <div class="topbar-left">
           <button class="mobile-menu" onclick="toggleSidebar()">&#9776;</button>
-          <h1 id="page-title">// OVERVIEW</h1>
+          <h1 id="page-title">Overview</h1>
         </div>
         <div class="topbar-right">
           <span class="status-dot"></span>
-          <span id="last-updated">LAST SYNC: ---</span>
+          <span id="last-updated">Last sync: —</span>
         </div>
       </header>
 
@@ -118,7 +118,7 @@
         <div class="stats-row" id="global-stats"></div>
         <div class="cards" id="competitor-cards"></div>
         <div class="timeline-header">
-          <h2>&#9654; RECENT INTEL <span id="overview-change-count"></span></h2>
+          <h2>Recent Changes <span id="overview-change-count"></span></h2>
         </div>
         <div id="overview-timeline"></div>
       </div>
@@ -126,7 +126,7 @@
       <!-- Changes Tab -->
       <div class="tab-content" id="tab-changes">
         <div class="timeline-header">
-          <h2>&#9654; CHANGE LOG <span id="change-count"></span></h2>
+          <h2>Change Log <span id="change-count"></span></h2>
         </div>
         <div id="timeline-list"></div>
         <div class="pagination" id="pagination"></div>
@@ -135,11 +135,11 @@
       <!-- Activity Tab -->
       <div class="tab-content" id="tab-activity">
         <div class="chart-section">
-          <h2>&#9654; PUBLISHING FREQUENCY // NEW PAGES PER WEEK</h2>
+          <h2>Publishing Frequency — New Pages per Week</h2>
           <div class="chart-container" id="pub-chart"></div>
         </div>
         <div class="chart-section">
-          <h2>&#9654; CHANGE ACTIVITY // ALL TYPES PER WEEK</h2>
+          <h2>Change Activity — All Types per Week</h2>
           <div class="chart-container" id="activity-chart"></div>
         </div>
       </div>
