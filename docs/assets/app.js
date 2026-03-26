@@ -78,36 +78,47 @@ function closeSidebar() {
   document.getElementById("sidebar-overlay").classList.remove("active");
 }
 
-// --- Global Stats ---
+// --- Time range label helper ---
+function getTimeRangeLabel() {
+  const val = document.getElementById("filter-days").value;
+  if (val === "1") return "24h";
+  if (val === "7") return "7d";
+  if (val === "14") return "14d";
+  if (val === "30") return "30d";
+  if (val === "90") return "90d";
+  if (val === "0") return "all";
+  if (val === "custom") return "range";
+  return val + "d";
+}
+
+// --- Global Stats (uses filteredOverview) ---
 function renderGlobalStats() {
   const c = state.competitors || {};
   const totalPages = Object.values(c).reduce((s, d) => s + (d.total_urls_discovered || 0), 0);
-  const now = new Date();
-  const weekAgo = new Date(now - 7*24*60*60*1000);
-  const wc = changes.filter(ch => new Date(ch.timestamp) >= weekAgo);
+  const label = getTimeRangeLabel();
+  const fc = filteredOverview;
 
   document.getElementById("global-stats").innerHTML = `
     <div class="stat-card"><div class="stat-label">Competitors</div><div class="stat-value">${Object.keys(c).length}</div><div class="stat-sub">actively tracked</div></div>
     <div class="stat-card"><div class="stat-label">Pages Indexed</div><div class="stat-value">${totalPages.toLocaleString()}</div><div class="stat-sub">total discovered</div></div>
-    <div class="stat-card"><div class="stat-label">New Pages (7d)</div><div class="stat-value">${wc.filter(ch=>ch.change_type==="new_page").length}</div><div class="stat-sub">this week</div></div>
-    <div class="stat-card"><div class="stat-label">Content Updates (7d)</div><div class="stat-value">${wc.filter(ch=>ch.change_type==="content_update").length}</div><div class="stat-sub">this week</div></div>
-    <div class="stat-card"><div class="stat-label">Total Changes</div><div class="stat-value">${changes.length}</div><div class="stat-sub">all time</div></div>
+    <div class="stat-card"><div class="stat-label">New Pages (${label})</div><div class="stat-value">${fc.filter(ch=>ch.change_type==="new_page").length}</div><div class="stat-sub">in selected range</div></div>
+    <div class="stat-card"><div class="stat-label">Content Updates (${label})</div><div class="stat-value">${fc.filter(ch=>ch.change_type==="content_update").length}</div><div class="stat-sub">in selected range</div></div>
+    <div class="stat-card"><div class="stat-label">All Changes (${label})</div><div class="stat-value">${fc.length}</div><div class="stat-sub">in selected range</div></div>
   `;
 }
 
-// --- Cards ---
+// --- Cards (uses filteredOverview) ---
 function renderCompetitorCards() {
   const container = document.getElementById("competitor-cards");
   const competitors = state.competitors || {};
-  const now = new Date();
-  const weekAgo = new Date(now - 7*24*60*60*1000);
   const maxPages = Math.max(...Object.values(competitors).map(d => d.total_urls_discovered || 0), 1);
+  const label = getTimeRangeLabel();
+  const fc = filteredOverview;
 
   container.innerHTML = "";
   let i = 0;
   for (const [domain, data] of Object.entries(competitors)) {
-    const dc = changes.filter(c => c.domain === domain);
-    const wc = dc.filter(c => new Date(c.timestamp) >= weekAgo);
+    const dc = fc.filter(c => c.domain === domain);
     const pages = data.total_urls_discovered || Object.keys(data.pages || {}).length;
     const color = COLORS[i % COLORS.length];
 
@@ -120,9 +131,9 @@ function renderCompetitorCards() {
       </div>
       <div class="card-stats">
         <div class="card-row"><span class="label">Pages</span><span class="val">${pages.toLocaleString()}</span></div>
-        <div class="card-row"><span class="label">New (7d)</span><span class="val" style="color:var(--green)">${wc.filter(c=>c.change_type==="new_page").length}</span></div>
-        <div class="card-row"><span class="label">Updates (7d)</span><span class="val" style="color:var(--yellow)">${wc.filter(c=>c.change_type==="content_update").length}</span></div>
-        <div class="card-row"><span class="label">Total events</span><span class="val">${dc.length}</span></div>
+        <div class="card-row"><span class="label">New (${label})</span><span class="val" style="color:var(--green)">${dc.filter(c=>c.change_type==="new_page").length}</span></div>
+        <div class="card-row"><span class="label">Updates (${label})</span><span class="val" style="color:var(--yellow)">${dc.filter(c=>c.change_type==="content_update").length}</span></div>
+        <div class="card-row"><span class="label">Total (${label})</span><span class="val">${dc.length}</span></div>
       </div>
       <div class="card-bar"><div class="card-bar-fill" style="width:${(pages/maxPages*100).toFixed(0)}%;background:${color}"></div></div>
     `;
@@ -155,6 +166,8 @@ document.getElementById("filter-days").addEventListener("change", function() {
 
 function applyOverviewFilters() {
   filteredOverview = filterByTime(changes, "filter-days", fpFrom, fpTo);
+  renderGlobalStats();
+  renderCompetitorCards();
   renderOverviewTimeline();
 }
 
