@@ -841,11 +841,54 @@ body {
   }
   .main { margin-left: 0; }
   .mobile-menu { display: block; }
-  .topbar { padding: 12px 16px; }
-  .tab-content { padding: 16px; }
-  .filters-bar { margin: 12px 16px 0; flex-direction: column; }
+  .topbar { padding: 10px 14px; }
+  .topbar-left h1 { font-size: 0.95rem; }
+  .topbar-right { font-size: 0.7rem; }
+  .tab-content { padding: 14px; }
+
+  /* Mobile filters: horizontal scroll pills */
+  .filters-bar {
+    margin: 10px 14px 0;
+    padding: 12px;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .filters-bar::-webkit-scrollbar { display: none; }
+  .filter-group {
+    flex-shrink: 0;
+    min-width: 0;
+  }
+  .filter-group label {
+    font-size: 0.58rem;
+    margin-bottom: 2px;
+  }
+  .filter-group select, .datepicker-input {
+    font-size: 0.78rem !important;
+    padding: 6px 8px !important;
+    min-width: 120px;
+    max-width: 160px;
+  }
+  .date-range-group {
+    min-width: 110px;
+  }
+  .date-range-group .datepicker-input {
+    min-width: 110px !important;
+    width: 110px;
+  }
+
   .cards { grid-template-columns: 1fr; }
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .change-header { flex-direction: column; align-items: flex-start; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .stat-card { padding: 12px 14px; }
+  .stat-label { font-size: 0.6rem; }
+  .stat-value { font-size: 1.2rem; }
+  .change-item { padding: 12px; }
+  .change-header { flex-direction: column; align-items: flex-start; gap: 6px; }
   .change-time { margin-left: 0; }
+  .change-title { font-size: 0.8rem; }
+  .change-url { font-size: 0.75rem; }
+  .dashboard-footer { font-size: 0.38rem; padding: 16px 14px; }
 }
