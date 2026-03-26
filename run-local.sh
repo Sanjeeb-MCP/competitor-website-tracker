@@ -6,6 +6,9 @@ cd "$(dirname "$0")"
 
 echo "$(date): Starting local crawl for Advantage Club..."
 
+# Pull latest first to avoid conflicts
+git pull origin main
+
 # Run tracker with local-only config
 python3 -m tracker.main --config config/local-only.yml --verbose
 
@@ -14,7 +17,6 @@ if ! git diff --quiet data/ docs/; then
   echo "$(date): Changes detected, pushing to GitHub..."
   git add data/ docs/
   git commit -m "chore: local crawl update - Advantage Club [$(date -u +%Y-%m-%dT%H:%M:%SZ)]"
-  git pull --rebase origin main
   git push origin main
   echo "$(date): Pushed successfully."
 else
