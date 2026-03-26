@@ -4,8 +4,9 @@ let state = null;
 let changes = [];
 let filteredOverview = [];
 let filteredChanges = [];
+let filteredActivity = [];
 let currentPage = 1;
-let fpFrom, fpTo, fpFromC, fpToC;
+let fpFrom, fpTo, fpFromC, fpToC, fpFromA, fpToA;
 
 async function loadData() {
   try {
@@ -30,6 +31,8 @@ function initDatePickers() {
   fpTo = flatpickr("#date-to", { ...opts, onChange: () => applyOverviewFilters() });
   fpFromC = flatpickr("#date-from-changes", { ...opts, onChange: () => applyChangesFilters() });
   fpToC = flatpickr("#date-to-changes", { ...opts, onChange: () => applyChangesFilters() });
+  fpFromA = flatpickr("#date-from-activity", { ...opts, onChange: () => applyActivityFilters() });
+  fpToA = flatpickr("#date-to-activity", { ...opts, onChange: () => applyActivityFilters() });
 }
 
 function renderAll() {
@@ -40,7 +43,7 @@ function renderAll() {
   populateFilters();
   applyOverviewFilters();
   applyChangesFilters();
-  renderCharts();
+  applyActivityFilters();
 }
 
 // --- Tabs ---
@@ -56,6 +59,7 @@ document.querySelectorAll(".nav-item").forEach(item => {
       tab === "overview" ? "Overview" : tab === "changes" ? "Changes" : "Activity";
     document.getElementById("overview-filters").style.display = tab === "overview" ? "flex" : "none";
     document.getElementById("changes-filters").style.display = tab === "changes" ? "flex" : "none";
+    document.getElementById("activity-filters").style.display = tab === "activity" ? "flex" : "none";
     // Close sidebar on mobile after selecting a tab
     closeSidebar();
   });
@@ -322,22 +326,169 @@ function renderDetails(c) {
   return p.join(" &middot; ");
 }
 
+// --- Activity filters ---
+document.getElementById("filter-days-activity").addEventListener("change", function() {
+  const custom = this.value === "custom";
+  document.getElementById("custom-from-activity").style.display = custom ? "flex" : "none";
+  document.getElementById("custom-to-activity").style.display = custom ? "flex" : "none";
+  if (!custom) applyActivityFilters();
+});
+
+function applyActivityFilters() {
+  filteredActivity = filterByTime(changes, "filter-days-activity", fpFromA, fpToA);
+  renderCharts();
+}
+
+function getActivityLabel() {
+  const val = document.getElementById("filter-days-activity").value;
+  if (val === "1") return "24h";
+  if (val === "7") return "7d";
+  if (val === "14") return "14d";
+  if (val === "30") return "30d";
+  if (val === "90") return "90d";
+  if (val === "0") return "all time";
+  if (val === "custom") return "selected range";
+  return val + "d";
+}
+
 // --- Charts ---
 function renderCharts() {
+  const label = getActivityLabel();
+  renderActivityStats();
   renderHorizontalChart("pub-chart", "new_page");
   renderHorizontalChart("activity-chart", null);
+  renderTypeBreakdown();
+  renderWeeklyTrend();
+}
+
+function renderActivityStats() {
+  const fc = filteredActivity;
+  const label = getActivityLabel();
+  const np = fc.filter(c => c.change_type === "new_page").length;
+  const cu = fc.filter(c => c.change_type === "content_update").length;
+  const rd = fc.filter(c => c.change_type === "redirect").length;
+  const rm = fc.filter(c => c.change_type === "page_removed").length;
+
+  document.getElementById("activity-stats").innerHTML = `
+    <div class="stat-card"><div class="stat-label">Total Events (${label})</div><div class="stat-value">${fc.length}</div></div>
+    <div class="stat-card"><div class="stat-label">New Pages (${label})</div><div class="stat-value" style="color:var(--green)">${np}</div></div>
+    <div class="stat-card"><div class="stat-label">Content Updates (${label})</div><div class="stat-value" style="color:var(--yellow)">${cu}</div></div>
+    <div class="stat-card"><div class="stat-label">Redirects (${label})</div><div class="stat-value" style="color:var(--orange)">${rd}</div></div>
+    <div class="stat-card"><div class="stat-label">Removed (${label})</div><div class="stat-value" style="color:var(--red)">${rm}</div></div>
+  `;
+}
+
+function renderTypeBreakdown() {
+  const container = document.getElementById("type-chart");
+  const fc = filteredActivity;
+  if (!fc.length) { container.innerHTML = '<div class="empty-state">No data for selected range.</div>'; return; }
+
+  const types = {};
+  fc.forEach(c => { types[c.change_type] = (types[c.change_type] || 0) + 1; });
+
+  const typeColors = {
+    new_page: "var(--green)", content_update: "var(--yellow)", page_removed: "var(--red)",
+    redirect: "var(--orange)", title_change: "var(--blue)", meta_change: "var(--purple)",
+    h1_change: "var(--cyan)", schema_change: "#c090ff", url_case_change: "var(--lime)"
+  };
+
+  const sorted = Object.entries(types).sort((a, b) => b[1] - a[1]);
+  const maxVal = sorted[0][1];
+
+  let html = '<div class="h-chart">';
+  sorted.forEach(([type, count]) => {
+    const pct = (count / maxVal * 100).toFixed(1);
+    const color = typeColors[type] || "var(--text-secondary)";
+    html += `
+      <div class="h-chart-row">
+        <div class="h-chart-label">${type.replace(/_/g, " ")}</div>
+        <div class="h-chart-bar-wrap">
+          <div class="h-chart-bar" style="width:${pct}%;background:${color}"></div>
+        </div>
+        <div class="h-chart-value" style="color:${color}">${count}</div>
+      </div>
+    `;
+  });
+  html += '</div>';
+
+  // Percentage donut-style list
+  const total = fc.length;
+  html += '<div class="type-pct-list">';
+  sorted.forEach(([type, count]) => {
+    const pct = (count / total * 100).toFixed(1);
+    const color = typeColors[type] || "var(--text-secondary)";
+    html += `<div class="type-pct-item"><span class="type-pct-dot" style="background:${color}"></span><span class="type-pct-name">${type.replace(/_/g, " ")}</span><span class="type-pct-val">${pct}%</span></div>`;
+  });
+  html += '</div>';
+
+  container.innerHTML = html;
+}
+
+function renderWeeklyTrend() {
+  const container = document.getElementById("trend-chart");
+  const fc = filteredActivity;
+  if (!fc.length) { container.innerHTML = '<div class="empty-state">No data for selected range.</div>'; return; }
+
+  // Group by week
+  const weeks = {};
+  fc.forEach(c => {
+    const d = new Date(c.timestamp);
+    const ws = new Date(d); ws.setDate(d.getDate() - d.getDay());
+    const key = ws.toISOString().slice(0, 10);
+    if (!weeks[key]) weeks[key] = { new_page: 0, content_update: 0, other: 0, total: 0 };
+    if (c.change_type === "new_page") weeks[key].new_page++;
+    else if (c.change_type === "content_update") weeks[key].content_update++;
+    else weeks[key].other++;
+    weeks[key].total++;
+  });
+
+  const sorted = Object.entries(weeks).sort((a, b) => a[0].localeCompare(b[0])).slice(-12);
+  if (sorted.length < 2) { container.innerHTML = '<div class="empty-state">Need at least 2 weeks of data for trend.</div>'; return; }
+
+  const maxTotal = Math.max(...sorted.map(([, w]) => w.total), 1);
+
+  let html = '<div class="trend-chart">';
+  sorted.forEach(([week, data]) => {
+    const label = new Date(week).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    const newPct = (data.new_page / maxTotal * 100).toFixed(1);
+    const updatePct = (data.content_update / maxTotal * 100).toFixed(1);
+    const otherPct = (data.other / maxTotal * 100).toFixed(1);
+
+    html += `
+      <div class="trend-row">
+        <div class="trend-label">${label}</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar-stack">
+            <div class="trend-segment" style="width:${newPct}%;background:var(--green)" title="New: ${data.new_page}"></div>
+            <div class="trend-segment" style="width:${updatePct}%;background:var(--yellow)" title="Updates: ${data.content_update}"></div>
+            <div class="trend-segment" style="width:${otherPct}%;background:var(--blue)" title="Other: ${data.other}"></div>
+          </div>
+        </div>
+        <div class="trend-total">${data.total}</div>
+      </div>
+    `;
+  });
+  html += '</div>';
+
+  html += '<div class="chart-legend" style="margin-top:12px">';
+  html += '<div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>New Pages</div>';
+  html += '<div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div>Content Updates</div>';
+  html += '<div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Other</div>';
+  html += '</div>';
+
+  container.innerHTML = html;
 }
 
 function renderHorizontalChart(containerId, filterType) {
   const container = document.getElementById(containerId);
   const competitors = Object.entries(state.competitors || {});
-  if (!competitors.length || !changes.length) {
-    container.innerHTML = '<div class="empty-state">Not enough data yet. Charts will populate after more crawl cycles.</div>';
+  if (!competitors.length || !filteredActivity.length) {
+    container.innerHTML = '<div class="empty-state">No data for selected range.</div>';
     return;
   }
 
-  // Aggregate per competitor
-  const rel = filterType ? changes.filter(c => c.change_type === filterType) : changes;
+  // Aggregate per competitor using filtered data
+  const rel = filterType ? filteredActivity.filter(c => c.change_type === filterType) : filteredActivity;
   const totals = {};
   const weeklyData = {};
   rel.forEach(c => {

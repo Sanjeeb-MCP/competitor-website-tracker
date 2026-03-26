@@ -135,15 +135,48 @@
         <div class="pagination" id="pagination"></div>
       </div>
 
+      <!-- Activity Filters -->
+      <div class="filters-bar" id="activity-filters" style="display:none">
+        <div class="filter-group">
+          <label>TIME RANGE</label>
+          <select id="filter-days-activity">
+            <option value="1">Last 24 hours</option>
+            <option value="7">Last 7 days</option>
+            <option value="14">Last 14 days</option>
+            <option value="30" selected>Last 30 days</option>
+            <option value="90">Last 90 days</option>
+            <option value="0">All time</option>
+            <option value="custom">Custom range</option>
+          </select>
+        </div>
+        <div class="filter-group date-range-group" id="custom-from-activity" style="display:none">
+          <label>FROM</label>
+          <input type="text" id="date-from-activity" placeholder="Select date" class="datepicker-input" readonly>
+        </div>
+        <div class="filter-group date-range-group" id="custom-to-activity" style="display:none">
+          <label>TO</label>
+          <input type="text" id="date-to-activity" placeholder="Select date" class="datepicker-input" readonly>
+        </div>
+      </div>
+
       <!-- Activity Tab -->
       <div class="tab-content" id="tab-activity">
+        <div class="activity-stats-row" id="activity-stats"></div>
         <div class="chart-section">
-          <h2>Publishing Frequency — New Pages per Week</h2>
+          <h2>New Pages by Competitor</h2>
           <div class="chart-container" id="pub-chart"></div>
         </div>
         <div class="chart-section">
-          <h2>Change Activity — All Types per Week</h2>
+          <h2>All Changes by Competitor</h2>
           <div class="chart-container" id="activity-chart"></div>
+        </div>
+        <div class="chart-section">
+          <h2>Change Type Breakdown</h2>
+          <div class="chart-container" id="type-chart"></div>
+        </div>
+        <div class="chart-section">
+          <h2>Weekly Trend</h2>
+          <div class="chart-container" id="trend-chart"></div>
         </div>
       </div>
 

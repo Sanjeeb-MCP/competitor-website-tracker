@@ -624,6 +624,114 @@ body {
   color: var(--text-primary);
 }
 
+/* Activity stats row */
+.activity-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.activity-stats-row .stat-card {
+  padding: 14px 16px;
+}
+.activity-stats-row .stat-value {
+  font-size: 1.3rem;
+}
+
+/* Type breakdown percentages */
+.type-pct-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.type-pct-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+}
+.type-pct-dot {
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.type-pct-name {
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+.type-pct-val {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Weekly trend - stacked horizontal bars */
+.trend-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.trend-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.trend-label {
+  width: 80px;
+  min-width: 80px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+.trend-bar-wrap {
+  flex: 1;
+  height: 22px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.trend-bar-stack {
+  display: flex;
+  height: 100%;
+}
+.trend-segment {
+  height: 100%;
+  min-width: 0;
+  transition: width 0.4s ease;
+}
+.trend-segment:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.trend-segment:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.trend-total {
+  width: 36px;
+  min-width: 36px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .activity-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .trend-label {
+    width: 60px;
+    min-width: 60px;
+    font-size: 0.68rem;
+  }
+  .type-pct-list {
+    gap: 6px 12px;
+  }
+}
+
 @media (max-width: 768px) {
   .h-chart-label {
     width: 80px;
