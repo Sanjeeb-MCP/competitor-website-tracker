@@ -1,5 +1,170 @@
 [
   {
+    "id": "chg_f8f70bf67158",
+    "timestamp": "2026-03-26T04:32:13.702285+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/cross-functional-recognition",
+    "change_type": "content_update",
+    "title": "8 Ways to Recognize Cross-Functional Collaboration at Work",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "9db1db7b69dc",
+      "new_hash": "02fd35ccb610",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 7,
+      "old_word_count": 1489,
+      "new_word_count": 1496
+    }
+  },
+  {
+    "id": "chg_899fdd38b7cc",
+    "timestamp": "2026-03-26T04:32:13.702285+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/quick-5-interview-nikku-singh-cesc",
+    "change_type": "content_update",
+    "title": "Scheduling Priorities: Nikku Singh’s Philosophy on Empowered HR Teams",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "7f38a492ece9",
+      "new_hash": "7d7218c5adbe",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 2,
+      "old_word_count": 1116,
+      "new_word_count": 1118
+    }
+  },
+  {
+    "id": "chg_fc0c262f1ee8",
+    "timestamp": "2026-03-26T04:32:13.702285+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/real-time-recognition",
+    "change_type": "content_update",
+    "title": "Real-Time Employee Recognition: 15 Ways to Build It Right",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "6e9638b7bdfa",
+      "new_hash": "4a7c05895196",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 5,
+      "old_word_count": 1307,
+      "new_word_count": 1312
+    }
+  },
+  {
+    "id": "chg_ad6b27f629bd",
+    "timestamp": "2026-03-26T04:32:13.702285+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/manager-recognition-dashboard",
+    "change_type": "content_update",
+    "title": "Manager Recognition Dashboard: 10 Ways to Simplify Rewards",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "b9de7deea1cb",
+      "new_hash": "bf826ef1105e",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 7,
+      "old_word_count": 1518,
+      "new_word_count": 1525
+    }
+  },
+  {
+    "id": "chg_b751e6686c49",
+    "timestamp": "2026-03-26T04:32:13.702285+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/quiet-leadership-women-recognition",
+    "change_type": "content_update",
+    "title": "7 Quiet Leadership Styles in Women at Work",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "694bf0714700",
+      "new_hash": "a6671c05eb3f",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 5,
+      "old_word_count": 1441,
+      "new_word_count": 1446
+    }
+  },
+  {
+    "id": "chg_d0e48cb29321",
+    "timestamp": "2026-03-26T04:32:13.702285+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/monika-garg-fresenius-hr-interview-employee-experience",
+    "change_type": "content_update",
+    "title": "Quick 5 Interview with Fresenius Medical Care's Monika Garg - Advantage Club Blogs",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "9fe137599700",
+      "new_hash": "0a7ec0c99dab",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 1,
+      "old_word_count": 1761,
+      "new_word_count": 1762
+    }
+  },
+  {
+    "id": "chg_a88415892c6f",
+    "timestamp": "2026-03-26T04:32:13.702285+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog",
+    "change_type": "content_update",
+    "title": "Rewards and Recognition Blog - AdvantageClub.ai",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "223f9c00c5d0",
+      "new_hash": "1210ef485ba9",
+      "diff_summary": "5 section(s) added, 5 section(s) removed",
+      "added": [
+        "blogs employee appreciation letter impact: 8 key benefits read more blogs quick 5 interview with",
+        "bechtel corporation's kashish sharma read more blogs 10 ways to build a customer-driven recognition program",
+        "that celebrates your best employees read more blogs 7 types of sales quotas every sales",
+        "leader should know read more blogs quick 5 interview with tvs motor company’s sanoj read",
+        "more blogs employee appreciation letter impact: 8 key benefits read more blogs quick 5 interview"
+      ],
+      "removed": [
+        "blogs 15 ways to build real-time performance recognition systems read more blogs employee appreciation letter",
+        "impact: 8 key benefits read more blogs 10 signs meeting overload is causing employee burnout",
+        "read more blogs 9 digital nomad employee engagement strategies for location-independent teams read more blogs",
+        "7 reasons rewarding failure at work builds an innovative culture read more blogs 15 ways",
+        "to build real-time performance recognition systems read more blogs employee appreciation letter impact: 8 key"
+      ],
+      "word_count_change": -2,
+      "old_word_count": 319,
+      "new_word_count": 317
+    }
+  },
+  {
+    "id": "chg_46b68a30754c",
+    "timestamp": "2026-03-26T04:32:13.702285+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog",
+    "change_type": "h1_change",
+    "title": "Rewards and Recognition Blog - AdvantageClub.ai",
+    "details": {
+      "old_h1": "15 Ways to Build Real-Time Performance Recognition Systems",
+      "new_h1": "Employee Appreciation Letter Impact: 8 Key Benefits"
+    }
+  },
+  {
     "id": "chg_c2eb1ae0da9d",
     "timestamp": "2026-03-25T06:20:42.590015+00:00",
     "competitor": "Vantage Circle",
