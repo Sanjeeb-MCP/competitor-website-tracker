@@ -846,38 +846,39 @@ body {
   .topbar-right { font-size: 0.7rem; }
   .tab-content { padding: 14px; }
 
-  /* Mobile filters: horizontal scroll pills */
+  /* Mobile filters: full-width grid */
   .filters-bar {
     margin: 10px 14px 0;
-    padding: 12px;
-    gap: 10px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    padding: 14px;
+    gap: 12px;
+    flex-direction: column;
+    border-color: var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    background: linear-gradient(135deg, var(--bg-card), rgba(0, 232, 123, 0.03));
   }
-  .filters-bar::-webkit-scrollbar { display: none; }
   .filter-group {
-    flex-shrink: 0;
-    min-width: 0;
+    width: 100%;
   }
   .filter-group label {
-    font-size: 0.58rem;
-    margin-bottom: 2px;
+    font-size: 0.62rem;
+    color: var(--accent);
+    margin-bottom: 4px;
   }
   .filter-group select, .datepicker-input {
-    font-size: 0.78rem !important;
-    padding: 6px 8px !important;
-    min-width: 120px;
-    max-width: 160px;
+    width: 100% !important;
+    min-width: 100% !important;
+    font-size: 0.84rem !important;
+    padding: 10px 12px !important;
+    border-color: var(--border-light) !important;
+    background: var(--bg-secondary) !important;
+    border-radius: 8px !important;
+  }
+  .filter-group select:focus, .datepicker-input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 8px rgba(0, 232, 123, 0.15) !important;
   }
   .date-range-group {
-    min-width: 110px;
-  }
-  .date-range-group .datepicker-input {
-    min-width: 110px !important;
-    width: 110px;
+    width: 100%;
   }
 
   .cards { grid-template-columns: 1fr; }
