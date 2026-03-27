@@ -1,5 +1,190 @@
 [
   {
+    "id": "chg_f7f034124d2e",
+    "timestamp": "2026-03-27T04:32:19.152994+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/customer-loyalty-vs-customer-retention",
+    "change_type": "content_update",
+    "title": "Customer Loyalty vs Customer Retention: What's The Difference?",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "2f052d4e5c28",
+      "new_hash": "912eddfef04a",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 16,
+      "old_word_count": 2326,
+      "new_word_count": 2342
+    }
+  },
+  {
+    "id": "chg_a796b098b17b",
+    "timestamp": "2026-03-27T04:32:19.152994+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/four-cs-of-customer-loyalty",
+    "change_type": "content_update",
+    "title": "Building Customer Loyalty with the 4 Cs",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "045da0a4ba87",
+      "new_hash": "38935f70040f",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 13,
+      "old_word_count": 1519,
+      "new_word_count": 1532
+    }
+  },
+  {
+    "id": "chg_f2d1d5b00e53",
+    "timestamp": "2026-03-27T04:32:19.152994+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/how-to-measure-customer-loyalty",
+    "change_type": "content_update",
+    "title": "How To Measure Customer Loyalty in 2026",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "a50ebde4c950",
+      "new_hash": "0d37250ad5d2",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 13,
+      "old_word_count": 2072,
+      "new_word_count": 2085
+    }
+  },
+  {
+    "id": "chg_3d94d1946eee",
+    "timestamp": "2026-03-27T04:32:19.152994+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/how-to-build-customer-loyalty-program",
+    "change_type": "content_update",
+    "title": "6 Easy Steps to Build a Customer Loyalty Program",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "5f2ca21f0e99",
+      "new_hash": "463c82a64c7a",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 16,
+      "old_word_count": 2046,
+      "new_word_count": 2062
+    }
+  },
+  {
+    "id": "chg_7444454897f3",
+    "timestamp": "2026-03-27T04:32:19.152994+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/brand-loyalty-and-customer-experience",
+    "change_type": "content_update",
+    "title": "Customer Experience and Brand Loyalty: Building Lasting Connections",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "82689b88f57d",
+      "new_hash": "7d356fe3b37d",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 13,
+      "old_word_count": 3930,
+      "new_word_count": 3943
+    }
+  },
+  {
+    "id": "chg_6d0917e6a163",
+    "timestamp": "2026-03-27T04:32:19.152994+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/customer-loyalty-and-profitability",
+    "change_type": "content_update",
+    "title": "Customer Loyalty and Profitability: How Loyalty Programs Boost Sales",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "428e7d11aa29",
+      "new_hash": "9fb2cdf26157",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 6,
+      "old_word_count": 2647,
+      "new_word_count": 2653
+    }
+  },
+  {
+    "id": "chg_5d00328015b5",
+    "timestamp": "2026-03-27T04:32:19.152994+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog/3-rs-of-customer-loyalty",
+    "change_type": "content_update",
+    "title": "The 3 R's of Customer Loyalty Explained",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "550e670090e4",
+      "new_hash": "a10115dc50a4",
+      "diff_summary": "Minor text changes detected",
+      "added": [],
+      "removed": [],
+      "word_count_change": 16,
+      "old_word_count": 1722,
+      "new_word_count": 1738
+    }
+  },
+  {
+    "id": "chg_7d4c01ea7c91",
+    "timestamp": "2026-03-27T04:32:19.152994+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog",
+    "change_type": "content_update",
+    "title": "Rewards and Recognition Blog - AdvantageClub.ai",
+    "details": {
+      "source": "content_hash",
+      "old_hash": "1210ef485ba9",
+      "new_hash": "cd9a7fdd78a9",
+      "diff_summary": "5 section(s) added, 5 section(s) removed",
+      "added": [
+        "blogs quick 5 interview with tvs motor company’s sanoj read more blogs 6 powerful ways",
+        "an employee co-created loyalty program triples adoption rates read more blogs quick 5 interview with",
+        "more blogs 6 powerful ways an employee co-created loyalty program triples adoption rates read more",
+        "blogs quick 5 interview with bechtel corporation's kashish sharma read more blogs 10 ways to",
+        "build a customer-driven recognition program that celebrates your best employees read more blogs 7 types"
+      ],
+      "removed": [
+        "blogs employee appreciation letter impact: 8 key benefits read more blogs quick 5 interview with",
+        "more blogs employee appreciation letter impact: 8 key benefits read more blogs quick 5 interview",
+        "with bechtel corporation's kashish sharma read more blogs 10 ways to build a customer-driven recognition",
+        "program that celebrates your best employees read more blogs 7 types of sales quotas every",
+        "sales leader should know read more blogs quick 5 interview with tvs motor company’s sanoj"
+      ],
+      "word_count_change": 11,
+      "old_word_count": 317,
+      "new_word_count": 328
+    }
+  },
+  {
+    "id": "chg_a322a248f2a7",
+    "timestamp": "2026-03-27T04:32:19.152994+00:00",
+    "competitor": "Advantage Club",
+    "domain": "advantageclub.ai",
+    "url": "https://www.advantageclub.ai/blog",
+    "change_type": "h1_change",
+    "title": "Rewards and Recognition Blog - AdvantageClub.ai",
+    "details": {
+      "old_h1": "Employee Appreciation Letter Impact: 8 Key Benefits",
+      "new_h1": "Quick 5 Interview with TVS Motor Company’s Sanoj"
+    }
+  },
+  {
     "id": "chg_fecd229a7332",
     "timestamp": "2026-03-26T06:59:53.275043+00:00",
     "competitor": "O.C. Tanner",
