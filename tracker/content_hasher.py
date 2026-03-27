@@ -11,7 +11,19 @@ from bs4 import BeautifulSoup
 logger = logging.getLogger(__name__)
 
 STRIP_TAGS = ["script", "style", "nav", "header", "footer", "noscript", "svg", "iframe"]
-MAX_CONTENT_SNIPPET = 1000
+STRIP_CLASSES = [
+    "sidebar", "side-bar", "related", "recommended", "popular",
+    "newsletter", "subscribe", "signup", "sign-up", "cta",
+    "social", "share", "sharing", "comments", "comment",
+    "breadcrumb", "pagination", "widget", "ad", "ads",
+    "banner", "cookie", "popup", "modal", "menu",
+    "table-of-contents", "toc",
+]
+STRIP_IDS = [
+    "sidebar", "related", "recommended", "comments", "newsletter",
+    "subscribe", "social", "share", "breadcrumb", "toc",
+]
+MAX_CONTENT_SNIPPET = 2000  # Increased for better diffing
 
 
 def hash_page(url: str, http_client) -> dict | None:
@@ -168,9 +180,30 @@ def _split_sentences(text: str) -> list[str]:
 
 
 def _extract_main_content(soup: BeautifulSoup) -> str:
+    # Strip known non-content tags
     for tag in STRIP_TAGS:
         for el in soup.find_all(tag):
             el.decompose()
+
+    # Strip elements by class name (sidebars, related posts, widgets, etc.)
+    for el in soup.find_all(True):
+        classes = " ".join(el.get("class", [])).lower()
+        el_id = (el.get("id") or "").lower()
+        if any(c in classes for c in STRIP_CLASSES):
+            el.decompose()
+            continue
+        if any(i in el_id for i in STRIP_IDS):
+            el.decompose()
+            continue
+
+    # Strip aside elements (typically sidebars/related content)
+    for el in soup.find_all("aside"):
+        el.decompose()
+
+    # Strip forms (newsletter signups, search, etc.)
+    for el in soup.find_all("form"):
+        el.decompose()
+
     main = soup.find("main") or soup.find("article")
     if main:
         text = main.get_text(separator=" ", strip=True)

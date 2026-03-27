@@ -1,145 +1,5 @@
 [
   {
-    "id": "chg_f7f034124d2e",
-    "timestamp": "2026-03-27T04:32:19.152994+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/customer-loyalty-vs-customer-retention",
-    "change_type": "content_update",
-    "title": "Customer Loyalty vs Customer Retention: What's The Difference?",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "2f052d4e5c28",
-      "new_hash": "912eddfef04a",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 16,
-      "old_word_count": 2326,
-      "new_word_count": 2342
-    }
-  },
-  {
-    "id": "chg_a796b098b17b",
-    "timestamp": "2026-03-27T04:32:19.152994+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/four-cs-of-customer-loyalty",
-    "change_type": "content_update",
-    "title": "Building Customer Loyalty with the 4 Cs",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "045da0a4ba87",
-      "new_hash": "38935f70040f",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 13,
-      "old_word_count": 1519,
-      "new_word_count": 1532
-    }
-  },
-  {
-    "id": "chg_f2d1d5b00e53",
-    "timestamp": "2026-03-27T04:32:19.152994+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/how-to-measure-customer-loyalty",
-    "change_type": "content_update",
-    "title": "How To Measure Customer Loyalty in 2026",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "a50ebde4c950",
-      "new_hash": "0d37250ad5d2",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 13,
-      "old_word_count": 2072,
-      "new_word_count": 2085
-    }
-  },
-  {
-    "id": "chg_3d94d1946eee",
-    "timestamp": "2026-03-27T04:32:19.152994+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/how-to-build-customer-loyalty-program",
-    "change_type": "content_update",
-    "title": "6 Easy Steps to Build a Customer Loyalty Program",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "5f2ca21f0e99",
-      "new_hash": "463c82a64c7a",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 16,
-      "old_word_count": 2046,
-      "new_word_count": 2062
-    }
-  },
-  {
-    "id": "chg_7444454897f3",
-    "timestamp": "2026-03-27T04:32:19.152994+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/brand-loyalty-and-customer-experience",
-    "change_type": "content_update",
-    "title": "Customer Experience and Brand Loyalty: Building Lasting Connections",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "82689b88f57d",
-      "new_hash": "7d356fe3b37d",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 13,
-      "old_word_count": 3930,
-      "new_word_count": 3943
-    }
-  },
-  {
-    "id": "chg_6d0917e6a163",
-    "timestamp": "2026-03-27T04:32:19.152994+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/customer-loyalty-and-profitability",
-    "change_type": "content_update",
-    "title": "Customer Loyalty and Profitability: How Loyalty Programs Boost Sales",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "428e7d11aa29",
-      "new_hash": "9fb2cdf26157",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 6,
-      "old_word_count": 2647,
-      "new_word_count": 2653
-    }
-  },
-  {
-    "id": "chg_5d00328015b5",
-    "timestamp": "2026-03-27T04:32:19.152994+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/3-rs-of-customer-loyalty",
-    "change_type": "content_update",
-    "title": "The 3 R's of Customer Loyalty Explained",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "550e670090e4",
-      "new_hash": "a10115dc50a4",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 16,
-      "old_word_count": 1722,
-      "new_word_count": 1738
-    }
-  },
-  {
     "id": "chg_7d4c01ea7c91",
     "timestamp": "2026-03-27T04:32:19.152994+00:00",
     "competitor": "Advantage Club",
@@ -16522,26 +16382,6 @@
     }
   },
   {
-    "id": "chg_cad9baad658b",
-    "timestamp": "2026-03-26T06:03:41.293662+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/articles/a-90-day-plan-for-new-leaders",
-    "change_type": "content_update",
-    "title": "A 90-Day Plan for New Leaders",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "c34851a8a651",
-      "new_hash": "b03e461ca6ae",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 5,
-      "old_word_count": 666,
-      "new_word_count": 671
-    }
-  },
-  {
     "id": "chg_50c3f11f1034",
     "timestamp": "2026-03-26T06:03:41.293662+00:00",
     "competitor": "O.C. Tanner",
@@ -16565,26 +16405,6 @@
     "details": {
       "old_h1": "Resource Hub",
       "new_h1": "Find us at"
-    }
-  },
-  {
-    "id": "chg_110290d66f8b",
-    "timestamp": "2026-03-26T06:03:41.293662+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/press/longstanding-o-c-tanner-leader-retires-as-executive-vice-president-of-marketing-and-business-development",
-    "change_type": "content_update",
-    "title": "Longstanding O.C. Tanner leader retires as executive vice president of marketing and business development",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "2fffb6ac3ed3",
-      "new_hash": "1a8924b2e753",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 9,
-      "old_word_count": 885,
-      "new_word_count": 894
     }
   },
   {
@@ -16620,23 +16440,6 @@
         "according to the recently published o.c.",
         "tanner global culture report, nearly a third of employees are operating in a state of mere survival : they’re stalling out professionally, burning out"
       ],
-      "removed": []
-    }
-  },
-  {
-    "id": "chg_06e075fcf6b6",
-    "timestamp": "2026-03-26T06:03:41.293662+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/webinars/recognition-builds-connection-a-causal-story",
-    "change_type": "content_update",
-    "title": "Recognition Builds Connection: A Causal Story | O.C. Tanner Webinars",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "c5ef05170581",
-      "new_hash": "a2aff29d0dff",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
       "removed": []
     }
   },
@@ -16746,26 +16549,6 @@
     }
   },
   {
-    "id": "chg_4eac9b38fdd7",
-    "timestamp": "2026-03-26T06:03:41.293662+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/articles/how-to-build-a-more-inclusive-workplace-culture",
-    "change_type": "content_update",
-    "title": "How to Build a More Inclusive Workplace Culture",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "33845b1eba5f",
-      "new_hash": "54b28abc924b",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 5,
-      "old_word_count": 1591,
-      "new_word_count": 1596
-    }
-  },
-  {
     "id": "chg_12c7c481e985",
     "timestamp": "2026-03-26T06:03:41.293662+00:00",
     "competitor": "O.C. Tanner",
@@ -16814,43 +16597,6 @@
       "schemas": [
         "BreadcrumbList"
       ]
-    }
-  },
-  {
-    "id": "chg_d60d38a79e27",
-    "timestamp": "2026-03-26T06:06:04.850294+00:00",
-    "competitor": "Workhuman",
-    "domain": "workhuman.com",
-    "url": "https://www.workhuman.com/why-workhuman/case-studies/",
-    "change_type": "content_update",
-    "title": "Case Studies | Workhuman",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "fc17bf4cbcf6",
-      "new_hash": "83d1c6c6fc96",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": []
-    }
-  },
-  {
-    "id": "chg_60de00bd06f3",
-    "timestamp": "2026-03-26T06:06:04.850294+00:00",
-    "competitor": "Workhuman",
-    "domain": "workhuman.com",
-    "url": "https://www.workhuman.com/blog/",
-    "change_type": "content_update",
-    "title": "Workhuman Blog",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "97203b3d5b66",
-      "new_hash": "0f7daabe14aa",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 16,
-      "old_word_count": 811,
-      "new_word_count": 827
     }
   },
   {
@@ -17264,126 +17010,6 @@
     }
   },
   {
-    "id": "chg_f8f70bf67158",
-    "timestamp": "2026-03-26T04:32:13.702285+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/cross-functional-recognition",
-    "change_type": "content_update",
-    "title": "8 Ways to Recognize Cross-Functional Collaboration at Work",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "9db1db7b69dc",
-      "new_hash": "02fd35ccb610",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 7,
-      "old_word_count": 1489,
-      "new_word_count": 1496
-    }
-  },
-  {
-    "id": "chg_899fdd38b7cc",
-    "timestamp": "2026-03-26T04:32:13.702285+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/quick-5-interview-nikku-singh-cesc",
-    "change_type": "content_update",
-    "title": "Scheduling Priorities: Nikku Singh’s Philosophy on Empowered HR Teams",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "7f38a492ece9",
-      "new_hash": "7d7218c5adbe",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 2,
-      "old_word_count": 1116,
-      "new_word_count": 1118
-    }
-  },
-  {
-    "id": "chg_fc0c262f1ee8",
-    "timestamp": "2026-03-26T04:32:13.702285+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/real-time-recognition",
-    "change_type": "content_update",
-    "title": "Real-Time Employee Recognition: 15 Ways to Build It Right",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "6e9638b7bdfa",
-      "new_hash": "4a7c05895196",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 5,
-      "old_word_count": 1307,
-      "new_word_count": 1312
-    }
-  },
-  {
-    "id": "chg_ad6b27f629bd",
-    "timestamp": "2026-03-26T04:32:13.702285+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/manager-recognition-dashboard",
-    "change_type": "content_update",
-    "title": "Manager Recognition Dashboard: 10 Ways to Simplify Rewards",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "b9de7deea1cb",
-      "new_hash": "bf826ef1105e",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 7,
-      "old_word_count": 1518,
-      "new_word_count": 1525
-    }
-  },
-  {
-    "id": "chg_b751e6686c49",
-    "timestamp": "2026-03-26T04:32:13.702285+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/quiet-leadership-women-recognition",
-    "change_type": "content_update",
-    "title": "7 Quiet Leadership Styles in Women at Work",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "694bf0714700",
-      "new_hash": "a6671c05eb3f",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 5,
-      "old_word_count": 1441,
-      "new_word_count": 1446
-    }
-  },
-  {
-    "id": "chg_d0e48cb29321",
-    "timestamp": "2026-03-26T04:32:13.702285+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/monika-garg-fresenius-hr-interview-employee-experience",
-    "change_type": "content_update",
-    "title": "Quick 5 Interview with Fresenius Medical Care's Monika Garg - Advantage Club Blogs",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "9fe137599700",
-      "new_hash": "0a7ec0c99dab",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 1,
-      "old_word_count": 1761,
-      "new_word_count": 1762
-    }
-  },
-  {
     "id": "chg_a88415892c6f",
     "timestamp": "2026-03-26T04:32:13.702285+00:00",
     "competitor": "Advantage Club",
@@ -17564,23 +17190,6 @@
     }
   },
   {
-    "id": "chg_8cc0c5279b3b",
-    "timestamp": "2026-03-25T06:26:04.880983+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/press/o-c-tanner-wins-four-stevie-r-awards-for-the-2018-american-business-awards-r",
-    "change_type": "content_update",
-    "title": "O.C. Tanner Wins Four Stevie Awards in 2018 | O.C. Tanner",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "974048e35ef7",
-      "new_hash": "8aa2d7010b26",
-      "diff_summary": "No previous content to compare",
-      "added": [],
-      "removed": []
-    }
-  },
-  {
     "id": "chg_bf4ba165a52d",
     "timestamp": "2026-03-25T06:26:04.880983+00:00",
     "competitor": "O.C. Tanner",
@@ -17701,57 +17310,6 @@
     }
   },
   {
-    "id": "chg_3f5e88f85c50",
-    "timestamp": "2026-03-25T06:26:04.880983+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/solutions/offline-deskless-employees",
-    "change_type": "content_update",
-    "title": "Offline Employee Recognition Solutions | Culture Cloud by O.C. Tanner",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "8e5aee0eb6b3",
-      "new_hash": "f4fb48b1e890",
-      "diff_summary": "No previous content to compare",
-      "added": [],
-      "removed": []
-    }
-  },
-  {
-    "id": "chg_3e8c7f898679",
-    "timestamp": "2026-03-25T06:26:04.880983+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/products/stores",
-    "change_type": "content_update",
-    "title": "Specialty Storefronts | Culture Cloud by O.C. Tanner",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "4b3477799776",
-      "new_hash": "3f08e2f2819c",
-      "diff_summary": "No previous content to compare",
-      "added": [],
-      "removed": []
-    }
-  },
-  {
-    "id": "chg_169d89297090",
-    "timestamp": "2026-03-25T06:26:04.880983+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/solutions/employee-retention",
-    "change_type": "content_update",
-    "title": "Employee Retention Solutions | Culture Cloud by O.C. Tanner",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "a08ec1931e7a",
-      "new_hash": "ba5d823edb31",
-      "diff_summary": "No previous content to compare",
-      "added": [],
-      "removed": []
-    }
-  },
-  {
     "id": "chg_52e0ed07fcfc",
     "timestamp": "2026-03-25T06:26:04.880983+00:00",
     "competitor": "O.C. Tanner",
@@ -17812,26 +17370,6 @@
     }
   },
   {
-    "id": "chg_c0062d4a5725",
-    "timestamp": "2026-03-25T06:26:04.880983+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/press/o-c-tanner-announces-2023-culture-trends-u-s-tour",
-    "change_type": "content_update",
-    "title": "O.C. Tanner Announces 2023 Culture Trends U.S. Tour",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "44eda509eea7",
-      "new_hash": "10e94d3b1cbb",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 9,
-      "old_word_count": 760,
-      "new_word_count": 769
-    }
-  },
-  {
     "id": "chg_30ac4e4d5817",
     "timestamp": "2026-03-25T06:26:04.880983+00:00",
     "competitor": "O.C. Tanner",
@@ -17844,23 +17382,6 @@
         "Article"
       ],
       "removed_schemas": []
-    }
-  },
-  {
-    "id": "chg_1c42a15f26e4",
-    "timestamp": "2026-03-25T06:26:04.880983+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/press/o-c-tanner-named-one-of-peoples-50-companies-that-care",
-    "change_type": "content_update",
-    "title": "O.C. Tanner Named One of People's 2018 \"50 Companies That Care\"",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "bf2d055bf9cb",
-      "new_hash": "f1d9a950b755",
-      "diff_summary": "No previous content to compare",
-      "added": [],
-      "removed": []
     }
   },
   {
@@ -17891,26 +17412,6 @@
         "PodcastEpisode"
       ],
       "removed_schemas": []
-    }
-  },
-  {
-    "id": "chg_a9b9585cf55e",
-    "timestamp": "2026-03-25T06:26:04.880983+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/articles/how-to-measure-the-roi-of-employee-recognition",
-    "change_type": "content_update",
-    "title": "How To Track the ROI of Employee Recognition",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "9214236b5d16",
-      "new_hash": "42e2fee7e183",
-      "diff_summary": "Minor text changes detected",
-      "added": [],
-      "removed": [],
-      "word_count_change": 5,
-      "old_word_count": 2671,
-      "new_word_count": 2676
     }
   },
   {
@@ -37987,23 +37488,6 @@
     }
   },
   {
-    "id": "chg_f05e7ce16abc",
-    "timestamp": "2026-03-24T11:11:58.122194+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/products/celebrations",
-    "change_type": "content_update",
-    "title": "Company Celebrations | Culture Cloud by O.C. Tanner",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "5163fbb08bda",
-      "new_hash": "2e6d5e9d57d9",
-      "diff_summary": "No previous content to compare",
-      "added": [],
-      "removed": []
-    }
-  },
-  {
     "id": "chg_34f47b163072",
     "timestamp": "2026-03-24T11:11:58.122194+00:00",
     "competitor": "O.C. Tanner",
@@ -38166,23 +37650,6 @@
         "Article"
       ],
       "removed_schemas": []
-    }
-  },
-  {
-    "id": "chg_b1ae3fa351de",
-    "timestamp": "2026-03-24T11:11:58.122194+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/company/institute",
-    "change_type": "content_update",
-    "title": "The O.C. Tanner Institute | Research & Insights",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "b048f48988de",
-      "new_hash": "543c25eb0dca",
-      "diff_summary": "No previous content to compare",
-      "added": [],
-      "removed": []
     }
   },
   {
@@ -38891,23 +38358,6 @@
     }
   },
   {
-    "id": "chg_379af1bc0cb3",
-    "timestamp": "2026-03-24T11:16:30.669160+00:00",
-    "competitor": "Awardco",
-    "domain": "awardco.com",
-    "url": "https://www.awardco.com/uk/platform/service-awards",
-    "change_type": "content_update",
-    "title": "Automated Employee Service Awards Platform | Awardco",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "20047c1314f7",
-      "new_hash": "8d4aa6ae1bfd",
-      "diff_summary": "No previous content to compare",
-      "added": [],
-      "removed": []
-    }
-  },
-  {
     "id": "chg_a27a3d7298cf",
     "timestamp": "2026-03-24T11:16:30.669160+00:00",
     "competitor": "Awardco",
@@ -39028,20 +38478,6 @@
     }
   },
   {
-    "id": "chg_999dbd9a8d1c",
-    "timestamp": "2026-03-24T05:40:02.607146+00:00",
-    "competitor": "Vantage Circle",
-    "domain": "vantagecircle.com",
-    "url": "https://www.vantagecircle.com/webinars/webinar-with-partha-neog/",
-    "change_type": "content_update",
-    "title": "- Vantage Circle",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "bb632e4cb94a",
-      "new_hash": "03fb9c0a8099"
-    }
-  },
-  {
     "id": "chg_6de23ab28260",
     "timestamp": "2026-03-24T05:40:02.607146+00:00",
     "competitor": "Vantage Circle",
@@ -39123,48 +38559,6 @@
       "last_seen": "2026-03-23T10:47:30.432414+00:00",
       "first_seen": "2026-03-23T10:47:30.432414+00:00",
       "missing_runs": 2
-    }
-  },
-  {
-    "id": "chg_e4613079c86d",
-    "timestamp": "2026-03-24T05:45:26.677708+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/solutions/manufacturing",
-    "change_type": "content_update",
-    "title": "Manufacturing Industry Solutions | Culture Cloud by O.C. Tanner",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "709c25637a84",
-      "new_hash": "2245b8e6920f"
-    }
-  },
-  {
-    "id": "chg_c4b863337583",
-    "timestamp": "2026-03-24T05:45:26.677708+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/solutions/company-culture",
-    "change_type": "content_update",
-    "title": "Company Culture Solutions | Culture Cloud by O.C. Tanner",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "ee1b09af206d",
-      "new_hash": "caf5f7c0f9d9"
-    }
-  },
-  {
-    "id": "chg_f8cbc6bd6df3",
-    "timestamp": "2026-03-24T05:45:26.677708+00:00",
-    "competitor": "O.C. Tanner",
-    "domain": "octanner.com",
-    "url": "https://www.octanner.com/solutions/employee-engagement",
-    "change_type": "content_update",
-    "title": "Employee Engagement Solutions | Culture Cloud by O.C. Tanner",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "dd396d8bbc98",
-      "new_hash": "fe1c0aeef66e"
     }
   },
   {
@@ -39294,20 +38688,6 @@
     }
   },
   {
-    "id": "chg_bc6ee60a1b69",
-    "timestamp": "2026-03-24T05:21:47.934735+00:00",
-    "competitor": "Achievers",
-    "domain": "achievers.com",
-    "url": "https://www.achievers.com/",
-    "change_type": "content_update",
-    "title": "Achievers - Employee Recognition and Rewards Software",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "1fd86d491165",
-      "new_hash": "ac4038b40d63"
-    }
-  },
-  {
     "id": "chg_e6abf7659f51",
     "timestamp": "2026-03-24T05:24:09.167624+00:00",
     "competitor": "O.C. Tanner",
@@ -39375,132 +38755,6 @@
       "source": "sitemap",
       "published_date": null,
       "summary": ""
-    }
-  },
-  {
-    "id": "chg_92ae7a730ba9",
-    "timestamp": "2026-03-24T05:31:17.971666+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/predictive-wellness-programs",
-    "change_type": "content_update",
-    "title": "10 Ways to Build Predictive Wellness Programs",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "7f23752914f6",
-      "new_hash": "951999246fa9"
-    }
-  },
-  {
-    "id": "chg_8498e154ddfd",
-    "timestamp": "2026-03-24T05:31:17.971666+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/womens-day-awards-workplace",
-    "change_type": "content_update",
-    "title": "Make Women’s Day Workplace Awards Truly Meaningful",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "92682b33076a",
-      "new_hash": "abe6daa99e7e"
-    }
-  },
-  {
-    "id": "chg_787dc31fad16",
-    "timestamp": "2026-03-24T05:31:17.971666+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/",
-    "change_type": "content_update",
-    "title": "Global Employee Recognition & Rewards Platform | AdvantageClub.ai",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "441b0bd98643",
-      "new_hash": "a17820d8555c"
-    }
-  },
-  {
-    "id": "chg_b5c80574f9e1",
-    "timestamp": "2026-03-24T05:31:17.971666+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/wellness-benefit-utilization",
-    "change_type": "content_update",
-    "title": "Improving Wellness Benefit Utilization at Work",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "ce5d74e2d87d",
-      "new_hash": "75d0d032787d"
-    }
-  },
-  {
-    "id": "chg_3de7a57b491d",
-    "timestamp": "2026-03-24T05:31:17.971666+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/gen-z-employee-engagement",
-    "change_type": "content_update",
-    "title": "8 Ways Gen Z Employees Stay Engaged at Work",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "d7b417723a91",
-      "new_hash": "120e69f4fc4e"
-    }
-  },
-  {
-    "id": "chg_0e3177143f22",
-    "timestamp": "2026-03-24T05:31:17.971666+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/flex-wellness-benefits",
-    "change_type": "content_update",
-    "title": "10 Flex Wellness Benefits Employees Actually Want",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "57bd14a13765",
-      "new_hash": "ee0930cec512"
-    }
-  },
-  {
-    "id": "chg_6ff5ece02089",
-    "timestamp": "2026-03-24T05:31:17.971666+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/signs-of-employee-disengagement",
-    "change_type": "content_update",
-    "title": "10 Signs of Employee Disengagement You Shouldn’t Ignore",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "637204b50d8a",
-      "new_hash": "a6a4a8689a3b"
-    }
-  },
-  {
-    "id": "chg_6011e6a2e542",
-    "timestamp": "2026-03-24T05:31:17.971666+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/employee-milestone-engagement",
-    "change_type": "content_update",
-    "title": "15 Employee Milestone Moments That Drive Engagement",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "8b193a87d687",
-      "new_hash": "fa78a3aaeceb"
-    }
-  },
-  {
-    "id": "chg_7a911905efbc",
-    "timestamp": "2026-03-24T05:31:17.971666+00:00",
-    "competitor": "Advantage Club",
-    "domain": "advantageclub.ai",
-    "url": "https://www.advantageclub.ai/blog/women-mental-health-challenges-workplace",
-    "change_type": "content_update",
-    "title": "Women’s Mental Health Challenges at Work",
-    "details": {
-      "source": "content_hash",
-      "old_hash": "1c9a3117473e",
-      "new_hash": "c1a6f8811b3b"
     }
   }
 ]

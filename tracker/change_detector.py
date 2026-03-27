@@ -136,6 +136,11 @@ def detect_changes(
                     new_wc = h.get("word_count", 0)
                     wc_change = new_wc - old_wc if old_wc and new_wc else 0
 
+                    # Skip very minor changes (likely dynamic page elements)
+                    # Only report if word count changed by >20 words OR diff found actual text changes
+                    has_real_diff = bool(diff.get("added")) or bool(diff.get("removed"))
+                    is_minor = not has_real_diff and abs(wc_change) <= 20
+
                     details = {
                         "source": "content_hash",
                         "old_hash": old_hash[:12],
@@ -149,16 +154,17 @@ def detect_changes(
                         details["old_word_count"] = old_wc
                         details["new_word_count"] = new_wc
 
-                    changes.append({
-                        "id": _generate_id(now, domain, url),
-                        "timestamp": now,
-                        "competitor": competitor_name,
-                        "domain": domain,
-                        "url": url,
-                        "change_type": "content_update",
-                        "title": page_data["title"],
-                        "details": details,
-                    })
+                    if not is_minor:
+                        changes.append({
+                            "id": _generate_id(now, domain, url),
+                            "timestamp": now,
+                            "competitor": competitor_name,
+                            "domain": domain,
+                            "url": url,
+                            "change_type": "content_update",
+                            "title": page_data["title"],
+                            "details": details,
+                        })
 
                 # --- Title change (always check, not just when content is same) ---
                 old_title = prev.get("title", "")
